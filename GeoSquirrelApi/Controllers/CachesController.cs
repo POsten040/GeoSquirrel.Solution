@@ -20,20 +20,28 @@ namespace GeoSquirrelApi.Controllers
         _db = db;
     }
     
-    // [HttpGet]
-    // public ActionResult<IEnumerable<Cache>> Get(decimal latitude, string name)
-    // {
-    //   var query = _db.Caches.AsQueryable();
-    //   if (latitude != null)
-    //   {
-    //     query = query.Where(e => e.Latitude == latitude);
-    //   }
-    //   if (name != null)
-    //   {
-    //     query = query.Where(e => e.Longitude == longitude);
-    //   }
-    //   return query.ToList();
-    // }
+    [HttpGet]
+    public ActionResult<IEnumerable<Cache>> Get(decimal latitude, decimal longitude, string name, DateTime dateCreated)
+    {
+        var query = _db.Caches.AsQueryable();
+        if (latitude != 0)
+        {
+            query = query.Where(e => e.Latitude == latitude);
+        }
+        if (longitude != 0)
+        {
+            query = query.Where(e => e.Longitude == longitude);
+        }
+        if (name != null)
+        {
+            query = query.Where(e => e.Longitude == longitude);
+        }
+        if (dateCreated != null)
+        {
+            query = query.Where(e => e.DateCreated == dateCreated);
+        }
+        return query.ToList();
+    }
     
     [HttpPost]
     public void Post([FromBody] Cache cache)

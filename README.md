@@ -1,14 +1,14 @@
-# _Business Lookup API_
+# _GeoSquirrel_
 
-### _Business Lookup API & 1.22.2021_
+### _January 25, 2021_
 
-### By Svea Wade 
+### By Svea Wade, Nathan Schrader, Randel Moore, Patrick Osten 
 
 ## **Project Description**
-This is an api that holds my favorite restaurants and shops in the Vancouver Area. 
+This is a website that allows you to create a profile and log and track geocaches near you.  
 
 
-## Usage / Examples
+## **Usage / Examples**
 
 
 ## **Required for Use**
@@ -112,16 +112,16 @@ Option 1 (download zip file)
 1) Copy and paste the following GitHub project link into your web browser's url bar and hit enter/return. 
 2) Download a .zip copy the repository by clicking on the large green "Code" button near the upper right corner of the screen.
 3) Right click the .zip file and extract(unzip) it's contents.
-4) Open your computer's terminal/console, and navigate to folder called "__BusinessLookup.Solution__". 
+4) Open your computer's terminal/console, and navigate to folder called "__GeoSquirrel.Solution__". 
 
 
 Option 2 (via git console/terminal)
 1) Open your Git enabled terminal/console and navigate to a directory that you wish to download this project to.
 2) Type the following line of code into your terminal/console to automatically download the project to your current directory and hit return/enter
 
-    <code>git clone https://github.com/svealinnea/LocalBusinessAPI.git </code>
+    <code>git clone https://github.com/schradermade/GeoSquirrel.Solution.git</code>
 
-3) Once the project has finished downloading, use the terminal/console to navigate to the “__BusinessLookup.Solution__" folder of the project.
+3) Once the project has finished downloading, use the terminal/console to navigate to the “__GeoSquirrel.Solution__" folder of the project.
   
 **Install Postman**
 This is optional https://www.postman.com/downloads/ 
@@ -140,7 +140,7 @@ Create a new file in the root directory of the __BusinessLookup.Solution/ direct
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=localhost;Port=3306;database=business_lookup;uid=root;pwd=epicodus;"
+    "DefaultConnection": "Server=localhost;Port=3306;database=geosquirrel;uid=root;pwd=epicodus;"
   }
 }
 
@@ -190,18 +190,18 @@ DELETE /api/{component}/{id}
 ```
 ---------------------------------------------------------------------
 
-### Restaurants
+### Caches
 
-Access the name and address for my favorte restaurants in the Vancouver area
+Access the name, latitude, longitude and date added for the geocaches. 
 
 HTTP Request Structure: 
 
 ```
-GET /api/restuarants
-POST /api/restaurants
-GET /api/restaurants/{id}
-PUT /api/restaurants/{id}
-DELETE /api/restaurants/{id}
+GET /api/caches
+POST /api/caches
+GET /api/caches/{id}
+PUT /api/caches/{id}
+DELETE /api/caches/{id}
 ```
 
 -------------------------------------------------------------------------
@@ -216,27 +216,16 @@ https://localhost:5000/api/caches/1
 **Sample JSON Response:**
 
 ```
-    {
-        "restaurantId": 1,
-        "name": "Amaro’s Table",
-        "address": "1220 Main St #100, Vancouver, WA 98660"
-    },
+
 ```
 **Example of a Search Query**
 ```
-http://localhost:5000/api/hotels/?stars=4
+http://localhost:5000/api/caches/?latitude=
 ```
 
 JSON Response: 
 ```
-[
-    {
-        "hotelId": 2,
-        "name": "Hilton Vancouver Washington",
-        "address": "301 W 6th St, Vancouver, WA 98660",
-        "stars": 4
-    }
-]
+
 ```
 
 ## Technology Used
@@ -252,7 +241,7 @@ JSON Response:
 * Identity
   
 ## Known Bugs
-
+There are no known bugs
 
 
 ## Support and contact details

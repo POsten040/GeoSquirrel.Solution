@@ -1,3 +1,5 @@
+using System;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace GeoSquirrelApi.Models
@@ -14,9 +16,9 @@ namespace GeoSquirrelApi.Models
         {
         builder.Entity<Cache>()
             .HasData(
-                new Cache { CacheId = 1, Name = "Location 1", Latitude = 17.888, Longitude = 7.555, DateCreated = ""},
-                new Cache { CacheId = 1, Name = "Location 2", Latitude = 20.888, Longitude = 10.555, DateCreated = ""},
-                new Cache { CacheId = 1, Name = "Location 3", Latitude = 23.888, Longitude = 13.555, DateCreated = ""},
+                new Cache { CacheId = 1, Name = "Location 1", Latitude = 17.88888888m, Longitude = 7.58888855m, DateCreated = new DateTime(2020, 12, 1)},
+                new Cache { CacheId = 2, Name = "Location 2", Latitude = 20.88888888m, Longitude = 10.58888855m, DateCreated = new DateTime(2020, 8, 1)},
+                new Cache { CacheId = 3, Name = "Location 3", Latitude = 23.88888888m, Longitude = 13.55888885m, DateCreated = new DateTime(2020, 4, 1)}
             );
         }
     }
