@@ -13,39 +13,39 @@ namespace GeoSquirrelApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-    private GeoSquirrelApiContext _db;
-    public UsersController(GeoSquirrelApiContext db)
-    {
-        _db = db;
-    }
-  
+      private GeoSquirrelApiContext _db;
+      public UsersController(GeoSquirrelApiContext db)
+      {
+          _db = db;
+      }
     
-    [HttpPost]
-    public void Post([FromBody] User user)
-    {
-        _db.Users.Add(user);
-        _db.SaveChanges();
-    }
+      
+      [HttpPost]
+      public void Post([FromBody] User user)
+      {
+          _db.Users.Add(user);
+          _db.SaveChanges();
+      }
 
-    [HttpGet("{id}")]
-    public ActionResult<User> Get(int id)
-    {
-        return _db.Users.FirstOrDefault(entry => entry.UserId == id);
-    }
+      [HttpGet("{id}")]
+      public ActionResult<User> Get(int id)
+      {
+          return _db.Users.FirstOrDefault(entry => entry.UserId == id);
+      }
 
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] User user)
-    {
-        user.UserId = id;
-        _db.Entry(user).State = EntityState.Modified;
-        _db.SaveChanges();
-    }
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-        var userToDelete = _db.Users.FirstOrDefault(entry => entry.UserId == id);
-        _db.Users.Remove(userToDelete);
-        _db.SaveChanges();
-    }
+      [HttpPut("{id}")]
+      public void Put(int id, [FromBody] User user)
+      {
+          user.UserId = id;
+          _db.Entry(user).State = EntityState.Modified;
+          _db.SaveChanges();
+      }
+      [HttpDelete("{id}")]
+      public void Delete(int id)
+      {
+          var userToDelete = _db.Users.FirstOrDefault(entry => entry.UserId == id);
+          _db.Users.Remove(userToDelete);
+          _db.SaveChanges();
+      }
     }
 }
