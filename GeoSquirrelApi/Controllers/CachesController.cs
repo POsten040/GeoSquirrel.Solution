@@ -34,9 +34,9 @@ namespace GeoSquirrelApi.Controllers
         }
         if (name != null)
         {
-            query = query.Where(e => e.Longitude == longitude);
+            query = query.Where(e => e.Name == name);
         }
-        if (dateCreated != null)
+        if (dateCreated != DateTime.MinValue)
         {
             query = query.Where(e => e.DateCreated == dateCreated);
         }
