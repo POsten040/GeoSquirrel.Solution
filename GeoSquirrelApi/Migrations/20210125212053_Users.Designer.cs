@@ -3,14 +3,16 @@ using System;
 using GeoSquirrelApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GeoSquirrelApi.Migrations
 {
     [DbContext(typeof(GeoSquirrelApiContext))]
-    partial class GeoSquirrelApiContextModelSnapshot : ModelSnapshot
+    [Migration("20210125212053_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,32 +78,6 @@ namespace GeoSquirrelApi.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = 1,
-                            Email = "svealinneawade@gmail.com",
-                            Name = "Svea"
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            Email = "nathanschrader@icloud.com",
-                            Name = "Nathan"
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            Email = "posten.coding@gmail.com",
-                            Name = "Patrick"
-                        },
-                        new
-                        {
-                            UserId = 4,
-                            Email = "randel.c.moore@gmail.com",
-                            Name = "Randel"
-                        });
                 });
 #pragma warning restore 612, 618
         }

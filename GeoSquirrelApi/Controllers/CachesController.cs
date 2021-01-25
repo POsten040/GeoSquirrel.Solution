@@ -12,10 +12,10 @@ namespace GeoSquirrelApi.Controllers
 //   [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
-    public class GeoSquirrelsController : ControllerBase
+    public class CachesController : ControllerBase
     {
     private GeoSquirrelApiContext _db;
-    public GeoSquirrelsController(GeoSquirrelApiContext db)
+    public CachesController(GeoSquirrelApiContext db)
     {
         _db = db;
     }
