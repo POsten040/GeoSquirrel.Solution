@@ -1,0 +1,9 @@
+<h1>All Caches</h1>
+<ol>
+@foreach (Cache cache in Model)
+{
+  <ul>
+      <li>Id: @cache.CacheId</li>
+      <li>Name: @cache.Name</li>
+  </ul>
+}
