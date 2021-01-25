@@ -7,12 +7,13 @@ namespace GeoSquirrelApi.Models
     public class Cache
     {
         public int CacheId { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public decimal Latitude { get; set; }
+        [Required]
         public decimal Longitude { get; set; }
-        // [DisplayName]
-        // [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [Required]
         public DateTime DateCreated { get; set; }
-        
     }
 }
