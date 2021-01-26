@@ -57,3 +57,24 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+/* ------------------------------------------------------ Home/Index*/
+
+.img-container {
+  text-align: center;
+  margin-left: 30px;
+  display: block;
+  font-family: 'Work Sans', sans-serif
+}
+/* .login-container {
+  background-color:burlywood;
+} */
+h1 {
+  font-family: 'Work Sans', sans-serif
+}
+h2 {
+  font-family: 'Work Sans', sans-serif
+}
+h3 {
+  font-family: 'Work Sans', sans-serif
+}
+

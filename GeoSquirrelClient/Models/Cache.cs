@@ -13,6 +13,7 @@ namespace GeoSquirrelClient.Models
     public decimal Latitude { get; set; }
     public decimal Longitude { get; set; }
     public DateTime DateCreated { get; set; }
+    // public GeoLocation location { get; set; }
 
     public static List<Cache> GetCaches()
     {

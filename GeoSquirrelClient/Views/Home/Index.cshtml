@@ -1,30 +1,32 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model User
 
-<div class="text-center">
-    <p>@Html.ActionLink("Caches List", "Index", "Caches")</p>
+<div class="img-container" text-align="center">
+<img src="/img/GeoSquirrel.png" alt="GeoSquirrel" width="300" height="300" text-align="center">
+    @* <div class="login-container">
+
+        <h2>Welcome</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email)
+            <br>
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password)
+            <br>
+            <input type="submit" value="Log in" class="btn btn-dark" />
+        }
+
+    </div> *@
 </div>
+<br>
 
-@* <img src="/img/GeoSquirrel.png" alt="GeoSquirrel" width="500" height="600"> *@
-
-
-@* <ol>
-@foreach (Cache cache in Model)
-{
-    <ul>
-        <li>ID: @cache.CacheId</li>
-        <li>Name: @cache.Name</li>
-        <li>Hours: @cache.Latitude</li>
-        <li>Industry: @cache.Longitude</li>
-        <li>Address: @cache.DateCreated</li>
-    </ul>
-    <br>
-}
-</ol> *@
 
 <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-<hr />
+@* <hr /> *@
 <h3>GeoSquirrel Development Team</h3>
 <table class="table" >
     <thead>
@@ -40,3 +42,26 @@
             </tr>
     </tbody>
 </table>
+
+
+
+
+
+
+@* <div class="text-center">
+    <p>@Html.ActionLink("Caches List", "Index", "Caches")</p>
+</div> *@
+
+@* <ol>
+@foreach (Cache cache in Model)
+{
+    <ul>
+        <li>ID: @cache.CacheId</li>
+        <li>Name: @cache.Name</li>
+        <li>Hours: @cache.Latitude</li>
+        <li>Industry: @cache.Longitude</li>
+        <li>Address: @cache.DateCreated</li>
+    </ul>
+    <br>
+}
+</ol> *@
