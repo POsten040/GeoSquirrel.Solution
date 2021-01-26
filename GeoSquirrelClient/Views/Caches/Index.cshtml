@@ -1,9 +1,36 @@
-<h1>All Caches</h1>
-<ol>
-@foreach (Cache cache in Model)
-{
-  <ul>
-      <li>Id: @cache.CacheId</li>
-      <li>Name: @cache.Name</li>
-  </ul>
+@{
+    ViewData["Title"] = "Home Page";
 }
+
+<h1>Live GeoCaches</h1>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>DateCreated</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Cache cache in Model)
+            {
+                <tr>
+                    <td>@cache.CacheId</td>
+                    <td>@cache.Name</td>
+                    <td>@cache.Latitude</td>
+                    <td>@cache.Longitude</td>
+                    <td>@cache.DateCreated</td>
+                    <td><a class="btn btn-success" href="/Caches/Details/@(cache.CacheId)"><p>View GeoCache Details</p></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @* @using (Html.BeginForm())
+{
+
+    <input type="submit" value="Edit" />
+} *@

@@ -3,7 +3,40 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>@Html.ActionLink("Caches List", "Index", "Cache")</p>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>@Html.ActionLink("Caches List", "Index", "Caches")</p>
 </div>
+
+@* <img src="/img/GeoSquirrel.png" alt="GeoSquirrel" width="500" height="600"> *@
+
+
+@* <ol>
+@foreach (Cache cache in Model)
+{
+    <ul>
+        <li>ID: @cache.CacheId</li>
+        <li>Name: @cache.Name</li>
+        <li>Hours: @cache.Latitude</li>
+        <li>Industry: @cache.Longitude</li>
+        <li>Address: @cache.DateCreated</li>
+    </ul>
+    <br>
+}
+</ol> *@
+
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+<hr />
+<h3>GeoSquirrel Development Team</h3>
+<table class="table" >
+    <thead>
+        <tr>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td><div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="patrick-osten"><a class="LI-simple-link" href='https://www.linkedin.com/in/patrick-osten?trk=profile-badge'>Patrick Osten</a></div></td>
+                <td><div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="randelmoore"><a class="LI-simple-link" href='https://www.linkedin.com/in/randelmoore?trk=profile-badge'>Randal Moore</a></div></td>
+                <td><div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="sveawade"><a class="LI-simple-link" href='https://www.linkedin.com/in/sveawade?trk=profile-badge'>Svea Wade</a></div></td>
+                <td><div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="light" data-vanity="schradermade"><a class="LI-simple-link" href='https://www.linkedin.com/in/schradermade?trk=profile-badge'>Nathan Schrader</a></div></td>
+            </tr>
+    </tbody>
+</table>

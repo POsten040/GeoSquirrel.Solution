@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,5 +13,6 @@ namespace GeoSquirrelApi.Models
         [Required]
         public string Email { get; set; }
         
+        // public List<Cache> CacheList { get;set;}
     }
 }

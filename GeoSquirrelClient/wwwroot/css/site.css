@@ -5,6 +5,8 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 50px;
 }
 
 /* Sticky footer styles
@@ -44,6 +46,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-color: #F9F1E2;
 }
 .footer {
   position: absolute;

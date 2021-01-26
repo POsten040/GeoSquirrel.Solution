@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
@@ -22,6 +23,34 @@ namespace GeoSquirrelClient.Models
       List<Cache> cacheList = JsonConvert.DeserializeObject<List<Cache>>(jsonResponse.ToString());
 
       return cacheList;
+    }
+
+    public static Cache GetDetails(int id)
+    {
+      var apiCallTask = ApiHelper.Get(id);
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Cache cache = JsonConvert.DeserializeObject<Cache>(jsonResponse.ToString());
+
+      return cache;
+    }
+
+    public static void Post(Cache cache)
+    {
+      string jsonCache = JsonConvert.SerializeObject(cache);
+      var apiCallTask = ApiHelper.Post(jsonCache);
+    }
+
+    public static void Put(Cache cache)
+    {
+      string jsonCache = JsonConvert.SerializeObject(cache);
+      var apiCallTask = ApiHelper.Put(cache.CacheId, jsonCache);
+    }
+
+    public static void Delete(int id)
+    {
+      var apiCallTask = ApiHelper.Delete(id);
     }
   }
 }

@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Details";
+}
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Date Created</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@Model.CacheId</td>
+                    <td>@Model.Name</td>
+                    <td>@Model.Latitude</td>
+                    <td>@Model.Longitude</td>
+                    <td>@Model.DateCreated</td>
+                </tr>
+        </tbody>
+    </table>
+
+<a class="btn btn-warning" href="/Caches/Edit/@(Model.CacheId)"><p>Edit @Model.Name</p></a>
+<hr />
+<a class="btn btn-success" href="/Caches"><p>Return To Caches</p></a>
+

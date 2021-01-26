@@ -1,0 +1,26 @@
+<form action="/Caches/Details/@(Model.CacheId)" method="post">
+  <table class="table" >
+      <thead>
+          <tr>
+              <th><label for="id">Id</label></th>
+              <th><label for="name">Name</label></th>
+              <th><label for="latitude">Latitude</label></th>
+              <th><label for="longitude">Longitude</label></th>
+              <th><label for="dateCreated">DateCreated</label></th>
+          </tr>
+      </thead>
+      <tbody>
+              <tr>
+                  <td>@Model.CacheId</td>
+                  <td><input id="name" name="name" type="text" value="@(Model.Name)"></td>
+                  <td><input id="latitude" name="latitude" type="number" value="@(Model.Latitude)"></td>
+                  <td><input id="longitude" name="longitude" type="number" value="@(Model.Longitude)"></td>
+                  <td><input id="dateCreated" name="dateCreated" type="date" value="@(Model.DateCreated)"></td>
+                  <td>@Model.DateCreated</td>
+              </tr>
+      </tbody>
+  </table>
+<button class="btn btn-success" type="submit">Submit Edits</button>
+</form>
+<hr />
+<a class="btn btn-danger" href="/Caches/Details/@(Model.CacheId)"><p>Cancel & Go Back</p></a>

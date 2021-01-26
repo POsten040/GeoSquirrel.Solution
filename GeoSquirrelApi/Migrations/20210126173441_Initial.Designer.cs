@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GeoSquirrelApi.Migrations
 {
     [DbContext(typeof(GeoSquirrelApiContext))]
-    [Migration("20210125212625_SeedData")]
-    partial class SeedData
+    [Migration("20210126173441_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
