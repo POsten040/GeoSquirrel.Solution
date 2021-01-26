@@ -23,45 +23,11 @@
     </style>
 
     @* Testing Google Map *@
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        #map{
-            height: 500px;
-            width: 100%;
-        }
-    </style>
-    <script>
-        function initMap() {
-            var dynamicLoc = {lat: (parseFloat((document.getElementById("modelLat").textContent))), 
-                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom:  10, 
-                center: dynamicLoc
-            });
-            var marker = new google.maps.Marker({
-                position: portland,
-                map: map
-            });
-            var marker2 = new google.maps.Marker({
-                position: beaverton,
-                map: map
-            });
-            var marker3 = new google.maps.Marker({
-                position: dynamicLoc,
-                map: map
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
-    
+
 </head>
 
 <body>
     @* Testing Google Map *@
-    <div id="map"></div>
 
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -93,6 +59,8 @@
             @RenderBody()
         </main>
     </div>
+
+
 
     <footer class="border-top footer text-muted">
         <div class="container">

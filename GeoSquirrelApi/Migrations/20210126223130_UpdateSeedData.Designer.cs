@@ -3,14 +3,16 @@ using System;
 using GeoSquirrelApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GeoSquirrelApi.Migrations
 {
     [DbContext(typeof(GeoSquirrelApiContext))]
-    partial class GeoSquirrelApiContextModelSnapshot : ModelSnapshot
+    [Migration("20210126223130_UpdateSeedData")]
+    partial class UpdateSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,7 +43,7 @@ namespace GeoSquirrelApi.Migrations
                             CacheId = 1,
                             DateCreated = new DateTime(2020, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Latitude = 45.5252m,
-                            Longitude = -122.7163m,
+                            Longitude = 122.7163m,
                             Name = "Pittock Mansion"
                         },
                         new
@@ -49,7 +51,7 @@ namespace GeoSquirrelApi.Migrations
                             CacheId = 2,
                             DateCreated = new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Latitude = 45.5051m,
-                            Longitude = -122.6750m,
+                            Longitude = 122.6750m,
                             Name = "Portland"
                         },
                         new
