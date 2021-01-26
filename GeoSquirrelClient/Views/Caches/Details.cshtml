@@ -16,16 +16,16 @@
                 <tr>
                     <td>@Model.CacheId</td>
                     <td>@Model.Name</td>
-                    <td>@Model.Latitude</td>
-                    <td>@Model.Longitude</td>
+                    <td id="modelLat">@Model.Latitude</td>
+                    <td id="modelLong">@Model.Longitude</td>
                     <td>@Model.DateCreated</td>
                 </tr>
         </tbody>
     </table>
 
-<a class="btn btn-warning" href="/Caches/Edit/@(Model.CacheId)"><p>Edit @Model.Name</p></a>
+<a class="btn btn-dark" href="/Caches/Edit/@(Model.CacheId)"><p>Edit @Model.Name</p></a>
 <hr />
-<a class="btn btn-success" href="/Caches"><p>Return To Caches</p></a>
+<a href="/Caches"><p>Return To Caches</p></a>
 
 <div id="map">
 

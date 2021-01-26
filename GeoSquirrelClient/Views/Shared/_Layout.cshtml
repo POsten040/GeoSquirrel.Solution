@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -31,24 +33,32 @@
             width: 100%;
         }
     </style>
-    <script>
+    <script>   
         function initMap() {
-            var location = {lat: -25.363, lng: 131.044};
-            var location2 = {lat: -54.525963, lng: 15.255119};
+            var dynamicLoc = {lat: (parseFloat((document.getElementById("modelLat").textContent))), 
+                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
             var map = new google.maps.Map(document.getElementById("map"), {
-                zoom:  4, 
-                center: location
+                zoom:  10, 
+                center: dynamicLoc
             });
             var marker = new google.maps.Marker({
-                position: location,
+                position: portland,
+                map: map
+            });
+            var marker2 = new google.maps.Marker({
+                position: beaverton,
+                map: map
+            });
+            var marker3 = new google.maps.Marker({
+                position: dynamicLoc,
                 map: map
             });
         }
-        
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
     
 </head>
+
 <body>
     @* Testing Google Map *@
     <div id="map"></div>
@@ -66,8 +76,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Caches" asp-action="Index">Caches</a>
                         </li>
                     </ul>
                 </div>

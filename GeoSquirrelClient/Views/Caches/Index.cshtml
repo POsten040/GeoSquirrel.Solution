@@ -20,15 +20,16 @@
                 <tr>
                     <td>@cache.CacheId</td>
                     <td>@cache.Name</td>
-                    <td>@cache.Latitude</td>
-                    <td>@cache.Longitude</td>
+                    <td id="modelLat">@cache.Latitude</td>
+                    <td id="modelLong">@cache.Longitude</td>
                     <td>@cache.DateCreated</td>
-                    <td><a class="btn btn-success" href="/Caches/Details/@(cache.CacheId)"><p>View GeoCache Details</p></a></td>
+                    <td><a class="btn btn-dark" href="/Caches/Details/@(cache.CacheId)"><p>View GeoCache Details</p></a></td>
                 </tr>
             }
         </tbody>
     </table>
 
+<a href="/Caches/Create"><p>Create a Cache</p></a>
     @* @using (Html.BeginForm())
 {
 
