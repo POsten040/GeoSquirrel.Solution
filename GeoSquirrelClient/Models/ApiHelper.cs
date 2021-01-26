@@ -31,12 +31,12 @@ namespace GeoSquirrelClient.Models
       var response = await client.ExecuteTaskAsync(request);
     }
 
-    public static async Task AddNewUser(User newUser)
+    public static async Task AddNewPlayer(Player newPlayer)
     {
       RestClient client = new RestClient("http://locahost:5000/api");
-      RestRequest request = new RestRequest($"users", Method.POST);
+      RestRequest request = new RestRequest($"players", Method.POST);
       request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(JsonConvert.SerializeObject(newUser));
+      request.AddJsonBody(JsonConvert.SerializeObject(newPlayer));
       var response = await client.ExecuteTaskAsync(request);
     }
 
