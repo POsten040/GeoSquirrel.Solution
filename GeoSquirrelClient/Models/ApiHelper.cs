@@ -7,7 +7,7 @@ namespace GeoSquirrelClient.Models
 {
   class ApiHelper
   {
-    public static async Task<string> GetAll()
+    public static async Task<string> CacheGetAll()
     {
       Console.WriteLine("GET ALL");
       RestClient client = new RestClient("http://localhost:5000/api");
@@ -17,7 +17,7 @@ namespace GeoSquirrelClient.Models
       return response.Content;
     }
 
-        public static async Task<string> Get(int id)
+        public static async Task<string> CacheGet(int id)
       {
         RestClient client = new RestClient("http://localhost:5000/api");
         RestRequest request = new RestRequest($"caches/{id}", Method.GET);
@@ -25,7 +25,7 @@ namespace GeoSquirrelClient.Models
         return response.Content;
       }
 
-    public static async Task Post(string newCache)
+    public static async Task CachePost(string newCache)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches", Method.POST);
@@ -34,16 +34,7 @@ namespace GeoSquirrelClient.Models
       var response = await client.ExecuteTaskAsync(request);
     }
 
-    public static async Task AddNewPlayer(Player newPlayer)
-    {
-      RestClient client = new RestClient("http://localhost:5000/api");
-      RestRequest request = new RestRequest($"players", Method.POST);
-      request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(JsonConvert.SerializeObject(newPlayer));
-      var response = await client.ExecuteTaskAsync(request);
-    }
-
-    public static async Task Put(int id, string newCache)
+    public static async Task CachePut(int id, string newCache)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches/{id}", Method.PUT);
@@ -52,12 +43,109 @@ namespace GeoSquirrelClient.Models
       var response = await client.ExecuteTaskAsync(request);
     }
 
-    public static async Task Delete(int id)
+    public static async Task CacheDelete(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches/{id}", Method.DELETE);
       request.AddHeader("Content-Type", "application/json");
       var response = await client.ExecuteTaskAsync(request);
     }
+
+    //GAME!!!
+
+    public static async Task<string> GameGetAll()
+    {
+      Console.WriteLine("GET ALL");
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"games", Method.GET);
+      Console.WriteLine(request);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
+
+        public static async Task<string> GameGet(int id)
+      {
+        RestClient client = new RestClient("http://localhost:5000/api");
+        RestRequest request = new RestRequest($"games/{id}", Method.GET);
+        var response = await client.ExecuteTaskAsync(request);
+        return response.Content;
+      }
+
+    public static async Task GamePost(string newGame)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"games", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newGame);
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+
+    public static async Task GamePut(int id, string newGame)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"games/{id}", Method.PUT);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newGame);
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+    public static async Task GameDelete(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"games/{id}", Method.DELETE);
+      request.AddHeader("Content-Type", "application/json");
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+    //Player!!!
+
+    public static async Task<string> PlayerGetAll()
+    {
+      Console.WriteLine("GET ALL");
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"players", Method.GET);
+      Console.WriteLine(request);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
+
+        public static async Task<string> PlayerGet(int id)
+      {
+        RestClient client = new RestClient("http://localhost:5000/api");
+        RestRequest request = new RestRequest($"players/{id}", Method.GET);
+        var response = await client.ExecuteTaskAsync(request);
+        return response.Content;
+      }
+
+    public static async Task PlayerPost(string newPlayer)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"players", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newPlayer;
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+
+    public static async Task PlayerPut(int id, string newPlayer)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"players/{id}", Method.PUT);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(newPlayer);
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+    public static async Task PlayerDelete(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"players/{id}", Method.DELETE);
+      request.AddHeader("Content-Type", "application/json");
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
+
+    
   }
 }

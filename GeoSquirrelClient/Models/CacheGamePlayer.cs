@@ -6,12 +6,14 @@ using Newtonsoft.Json.Linq;
 
 namespace GeoSquirrelClient.Models
 {
-    public class PlayerCache
+    public class CacheGamePlayer
     {
-        public int PlayerCacheId { get; set; }
+        public int CacheGamePlayerId { get; set; }
         public int PlayerId { get; set; }
         public int CacheId { get; set; }
+        public int GameId { get; set; }
         public Cache Cache { get; set; }
+        public Game Game { get; set; }
         public Player Player { get; set; }
     }
 }

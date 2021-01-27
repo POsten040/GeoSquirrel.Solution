@@ -8,7 +8,8 @@ namespace GeoSquirrelClient.Models
     {
         public virtual DbSet<Cache> Caches { get; set; }
         public DbSet<Player> Players { get; set; }
-        public DbSet<PlayerCache> PlayerCaches { get; set; }
+        public DbSet<Game> Games { get; set; }
+        public DbSet<CacheGamePlayer> CachePlayers { get; set; }
         public GeoSquirrelClientContext(DbContextOptions options) : base(options)
         { }
         protected override void OnModelCreating(ModelBuilder builder)
@@ -26,6 +27,11 @@ namespace GeoSquirrelClient.Models
                 new Player { PlayerId = 2, Name = "Nathan", Email = "nathanschrader@icloud.com"},
                 new Player { PlayerId = 3, Name = "Patrick", Email = "posten.coding@gmail.com"},
                 new Player { PlayerId = 4, Name = "Randel", Email = "randel.c.moore@gmail.com"}
+                );
+        builder.Entity<Game>()
+            .HasData(
+                new Game { GameId =1, Name = "Game 1"}, 
+                new Game { GameId = 2, Name = "Game 2"},
                 );
         }
     }
