@@ -2,4 +2,21 @@
   Layout = "_Layout";
 }
 
-<h1>Create Page</h1>
+@model GeoSquirrelClient.Models.Game
+
+<div class="card">
+  <div class= "card-body">
+    <h2 class= "card-title">Game Creator: </h2>
+      <div class= "card-text">
+      @using (Html.BeginForm())
+      {
+        <p class="labels">@Html.LabelFor(model => model.Name)</p>
+        @Html.TextBoxFor(model => model.Name)
+        <br>
+        <input type="submit" value="Create a Game" class="btn btn-dark" http-equiv="refresh">
+        <meta http-equiv="refresh">
+      }
+      <br>
+      </div>
+  </div>
+</div>
