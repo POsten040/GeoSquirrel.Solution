@@ -20,13 +20,9 @@ namespace GeoSquirrelClient.Models
     public static List<Cache> GetCaches()
     {
       var apiCallTask = ApiHelper.GetAll();
-      Console.WriteLine(apiCallTask);
       var result = apiCallTask.Result;
-      Console.WriteLine(result);
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-      Console.WriteLine(jsonResponse);
       List<Cache> cacheList = JsonConvert.DeserializeObject<List<Cache>>(jsonResponse.ToString());
-      Console.WriteLine(cacheList);
       return cacheList;
     }
 
