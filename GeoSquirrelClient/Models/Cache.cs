@@ -25,9 +25,6 @@ namespace GeoSquirrelClient.Models
       var apiCallTask = ApiHelper.CachesGetAll();
       var result = apiCallTask.Result;
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-      Console.WriteLine(jsonResponse);
-      Console.WriteLine("JSON ABOVE ABOVE ABOVE");
-
       List<Cache> cacheList = JsonConvert.DeserializeObject<List<Cache>>(jsonResponse.ToString());
       return cacheList;
     }
@@ -36,10 +33,8 @@ namespace GeoSquirrelClient.Models
     {
       var apiCallTask = ApiHelper.CachesGet(id);
       var result = apiCallTask.Result;
-
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Cache cache = JsonConvert.DeserializeObject<Cache>(jsonResponse.ToString());
-
       return cache;
     }
 
@@ -52,7 +47,7 @@ namespace GeoSquirrelClient.Models
     public static void Put(Cache cache)
     {
       string jsonCache = JsonConvert.SerializeObject(cache);
-      var apiCallTask = ApiHelper.Put(cache.CacheId, jsonCache);
+      var apiCallTask = ApiHelper.CachesPut(cache.CacheId, jsonCache);
     }
 
     public static void Delete(int id)

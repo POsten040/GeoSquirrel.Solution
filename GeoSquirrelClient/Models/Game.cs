@@ -18,9 +18,6 @@ namespace GeoSquirrelClient.Models
       var apiCallTask = ApiHelper.GameGetAll();
       var result = apiCallTask.Result;
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
-      Console.WriteLine(jsonResponse);
-      Console.WriteLine("JSON ABOVE ABOVE ABOVE");
-
       List<Game> gameList = JsonConvert.DeserializeObject<List<Game>>(jsonResponse.ToString());
       return gameList;
     }
@@ -29,10 +26,8 @@ namespace GeoSquirrelClient.Models
     {
       var apiCallTask = ApiHelper.GameGet(id);
       var result = apiCallTask.Result;
-
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Game game = JsonConvert.DeserializeObject<Game>(jsonResponse.ToString());
-
       return game;
     }
 

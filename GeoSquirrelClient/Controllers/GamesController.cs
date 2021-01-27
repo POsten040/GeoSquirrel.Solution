@@ -18,7 +18,7 @@ namespace GeoSquirrelClient.Controllers
     }
     public ActionResult Index()
     {
-      var allGames = Player.GetGames();
+      var allGames = Game.GetGames();
       return View(allGames);
     }
     // public IActionResult Index()

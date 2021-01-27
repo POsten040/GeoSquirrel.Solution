@@ -7,7 +7,7 @@ namespace GeoSquirrelClient.Models
 {
   class ApiHelper
   {
-    public static async Task<string> CacheGetAll()
+    public static async Task<string> CachesGetAll()
     {
       Console.WriteLine("GET ALL");
       RestClient client = new RestClient("http://localhost:5000/api");
@@ -17,7 +17,7 @@ namespace GeoSquirrelClient.Models
       return response.Content;
     }
 
-        public static async Task<string> CacheGet(int id)
+        public static async Task<string> CachesGet(int id)
       {
         RestClient client = new RestClient("http://localhost:5000/api");
         RestRequest request = new RestRequest($"caches/{id}", Method.GET);
@@ -25,7 +25,7 @@ namespace GeoSquirrelClient.Models
         return response.Content;
       }
 
-    public static async Task CachePost(string newCache)
+    public static async Task CachesPost(string newCache)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches", Method.POST);
@@ -34,7 +34,7 @@ namespace GeoSquirrelClient.Models
       var response = await client.ExecuteTaskAsync(request);
     }
 
-    public static async Task CachePut(int id, string newCache)
+    public static async Task CachesPut(int id, string newCache)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches/{id}", Method.PUT);
@@ -43,7 +43,7 @@ namespace GeoSquirrelClient.Models
       var response = await client.ExecuteTaskAsync(request);
     }
 
-    public static async Task CacheDelete(int id)
+    public static async Task CachesDelete(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches/{id}", Method.DELETE);

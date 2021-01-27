@@ -37,7 +37,7 @@ namespace GeoSquirrelClient.Controllers
     public ActionResult Details(int id)
     {
       var player = Player.GetDetails(id);
-      return View(cache);
+      return View(player);
     }
 
     public ActionResult Edit(int id)
