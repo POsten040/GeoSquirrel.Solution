@@ -3,7 +3,7 @@
 }
 
 <h1>Live GeoCaches</h1>
-
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"/ >
 <table class="table">
         <thead>
             <tr>
@@ -27,9 +27,11 @@
                 </tr>
             }
         </tbody>
-    </table>
 
-<a href="/Caches/Create"><p>Create a Cache</p></a>
+    <a  class="btn btn-light" asp-area="" asp-controller="Caches" asp-action="Create">Create A Cache</a>
+    <br>
+    <br>
+</table>
 @* Google/GeoCode Map *@
 <div id="map"></div>
 

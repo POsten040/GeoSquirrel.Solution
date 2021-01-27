@@ -7,18 +7,17 @@
       <div class= "card-text">
       @using (Html.BeginForm())
       {
-        <p class="labels">@Html.LabelFor(model => model.Name)</p>
-        @Html.TextBoxFor(model => model.Name)
+        @Html.LabelFor(model => model.Name)
+        <input id="Name" name="Name" type="text">
         <br>
-        <p class="labels">@Html.LabelFor(model => model.Latitude)</p>
-        @Html.TextBoxFor(model => model.Latitude)
-
+        @Html.LabelFor(model => model.Latitude)
+        <input id="Latitude" name="Latitude" type="text">
+        @* <h5>@Html.TextBoxFor(model => model.Latitude)</h5> *@
         <br>
-        <p class="labels">@Html.LabelFor(model => model.Longitude)</p>
-        @Html.TextBoxFor(model => model.Longitude)
-
+        @Html.LabelFor(model => model.Longitude)
+        <input id="Longitude" name="Longitude" type="text">
         <br>
-        <p class="labels">@Html.LabelFor(model => model.DateCreated)</p>
+        @Html.LabelFor(model => model.DateCreated)
         @Html.TextBoxFor(model => model.DateCreated, "{0:yyyy-MM-dd}", new { @type = "date" })
         <br>
         <input type="submit" value="Create a Cache" class="btn btn-dark" http-equiv="refresh">
@@ -26,6 +25,8 @@
       }
       <br>
       </div>
-      @Html.ActionLink("Cache List", "Index") 
+      <hr />
+      <a  class="btn btn-light" asp-area="" asp-controller="Caches" asp-action="Index">Cache List</a>
+      <a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Index">Game List</a>
   </div>
 </div>

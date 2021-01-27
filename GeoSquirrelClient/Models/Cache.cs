@@ -11,13 +11,13 @@ namespace GeoSquirrelClient.Models
   public class Cache
   {
     public int CacheId { get; set; }
-    [DisplayName("Name:")]
+    [DisplayName("Name: ")]
     public string Name { get; set; }
-    [DisplayName("Latitude")]
+    [DisplayName("Latitude: ")]
     public decimal Latitude { get; set; }
-    [DisplayName("Longitude")]
+    [DisplayName("Longitude: ")]
     public decimal Longitude { get; set; }
-    [DisplayName("Date Created")]
+    [DisplayName("Date Created: ")]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     public DateTime DateCreated { get; set; }
     // public GeoLocation location { get; set; }

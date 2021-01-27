@@ -79,6 +79,10 @@ h3 {
   font-family: 'Work Sans', sans-serif
 }
 
+h5 {
+  font-family: 'Work Sans', sans-serif; 
+}
+
 #logout{
 margin-bottom: 50px;
 }
@@ -111,19 +115,29 @@ html{
 .testbox {
   margin: 20px auto;
   width: 343px; 
+  height: 335px; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #fffbfb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #f9f7f7;
+}
+
+.testbox1 {
+  margin: 20px auto;
+  width: 343px; 
   height: 464px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
-  background-color: #ebebeb; 
+  background-color: #fffbfb; 
   -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
   -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
   box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
-  border: solid 1px #a19595;
-}
-
-input[type=radio] {
-  visibility: hidden;
+  border: solid 1px #f9f7f7;
 }
 
 form{
@@ -185,6 +199,4 @@ h6 {
   color:white;
 }
 
-.labels {
-  padding: 1px;
-}
+
