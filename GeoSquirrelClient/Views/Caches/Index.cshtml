@@ -30,6 +30,47 @@
     </table>
 
 <a href="/Caches/Create"><p>Create a Cache</p></a>
+@* Google/GeoCode Map *@
+<div id="map"></div>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #map{
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function initMap() {
+            //var myLatLng = { lat: 37.4221, lng: -122.0841 };
+            //var hawaii = { lat: 19.8968, lng: -155.582779 }; *
+            var dynamicLoc = { lat: (parseFloat((document.getElementById("modelLat").textContent))), 
+                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom:  10, 
+                center: dynamicLoc,
+                streetViewControl: true,
+                title: "Testing2 Title"
+            });
+            var marker = new google.maps.Marker({
+                position: dynamicLoc,
+                map: map,
+                title: "Testing Title"
+            });
+            var marker2 = new google.maps.Marker({
+                position: beaverton,
+                map: map
+            });
+            var marker3 = new google.maps.Marker({
+                position: dynamicLoc,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
     @* @using (Html.BeginForm())
 {
 

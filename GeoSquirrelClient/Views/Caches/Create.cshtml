@@ -7,18 +7,18 @@
       <div class= "card-text">
       @using (Html.BeginForm())
       {
-        @Html.LabelFor(model => model.Name)
+        <p class="labels">@Html.LabelFor(model => model.Name)</p>
         @Html.TextBoxFor(model => model.Name)
         <br>
-        @Html.LabelFor(model => model.Latitude)
+        <p class="labels">@Html.LabelFor(model => model.Latitude)</p>
         @Html.TextBoxFor(model => model.Latitude)
 
         <br>
-        @Html.LabelFor(model => model.Longitude)
+        <p class="labels">@Html.LabelFor(model => model.Longitude)</p>
         @Html.TextBoxFor(model => model.Longitude)
 
         <br>
-        @Html.LabelFor(model => model.DateCreated)
+        <p class="labels">@Html.LabelFor(model => model.DateCreated)</p>
         @Html.TextBoxFor(model => model.DateCreated, "{0:yyyy-MM-dd}", new { @type = "date" })
         <br>
         <input type="submit" value="Create a Cache" class="btn btn-dark" http-equiv="refresh">

@@ -3,14 +3,16 @@ using System;
 using GeoSquirrelClient.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GeoSquirrelClient.Migrations
 {
     [DbContext(typeof(GeoSquirrelClientContext))]
-    partial class GeoSquirrelClientContextModelSnapshot : ModelSnapshot
+    [Migration("20210127211756_GameStuff")]
+    partial class GameStuff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,7 +138,7 @@ namespace GeoSquirrelClient.Migrations
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("CacheGamePlayers");
+                    b.ToTable("CachePlayers");
                 });
 
             modelBuilder.Entity("GeoSquirrelClient.Models.Game", b =>

@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -21,31 +26,18 @@ namespace GeoSquirrelClient.Controllers
       var allGames = Game.GetGames();
       return View(allGames);
     }
-    // public IActionResult Index()
-    // {
-    //   var allCaches = new List<Cache>();
-    //   return View(allCaches);
-    // }
-
-    [HttpPost]
-    public ActionResult Index(Game game)
-    {
-      Game.Post(game);
-      return RedirectToAction("Index");
-    }
 
     public ActionResult Details(int id)
     {
       var game = Game.GetDetails(id);
       return View(game);
     }
-
+    
     public ActionResult Edit(int id)
     {
       var game = Game.GetDetails(id);
       return View(game);
     }
-
 
     [HttpPost]
     public ActionResult Details(int id, Game game)

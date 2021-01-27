@@ -21,15 +21,11 @@
     <style>
         @* @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap'); *@
     </style>
-
-    @* Testing Google Map *@
-
 </head>
 
 <body>
-    @* Testing Google Map *@
-
     <header>
+        @* NavBar *@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">geosquirrel</a>
@@ -42,9 +38,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Games" asp-action="Index">Find Game</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Games" asp-action="Create">Create Game</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Caches" asp-action="Index">Caches</a>
                         </li>
