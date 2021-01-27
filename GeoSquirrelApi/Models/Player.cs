@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace GeoSquirrelApi.Models
 {
-    public class User
+    public class Player
     {
-        public int UserId { get; set; }
+        public int PlayerId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
