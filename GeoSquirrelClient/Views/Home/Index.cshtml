@@ -1,30 +1,21 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model Player
+@using GeoSquirrelClient.ViewModels
+
+@model LoginViewModel
 
 <div class="img-container" text-align="center">
 <img src="/img/GeoSquirrel.png" alt="GeoSquirrel" width="300" height="300" text-align="center">
-    @* <div class="login-container">
-
-        <h2>Welcome</h2>
-
-        @using (Html.BeginForm())
-        {
-            @Html.LabelFor(m => m.Email)
-            @Html.TextBoxFor(m => m.Email)
-            <br>
-            @Html.LabelFor(m => m.Password)
-            @Html.PasswordFor(m => m.Password)
-            <br>
-            <input type="submit" value="Log in" class="btn btn-dark" />
-        }
-
-    </div> *@
+    <div class="login-container">
+        <br>
+        <p class="button">@Html.ActionLink("Login", "Login", "Account")</p>
+        <p class="button">@Html.ActionLink("Create an account", "Register", "Account")</p>
+    </div>
 </div>
 <br>
 
-<div id="map"></div>
+@* <div id="map"></div>
 
     <style>
         *{
@@ -51,7 +42,7 @@
             });
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script> *@
     
 
 

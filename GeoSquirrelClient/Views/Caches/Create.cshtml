@@ -9,19 +9,20 @@
       {
         @Html.LabelFor(model => model.Name)
         @Html.TextBoxFor(model => model.Name)
-        @* <br>
+        <br>
         @Html.LabelFor(model => model.Latitude)
         @Html.TextBoxFor(model => model.Latitude)
 
         <br>
         @Html.LabelFor(model => model.Longitude)
-        @Html.TextBoxFor(model => model.Longitude) *@
+        @Html.TextBoxFor(model => model.Longitude)
 
         <br>
         @Html.LabelFor(model => model.DateCreated)
         @Html.TextBoxFor(model => model.DateCreated, "{0:yyyy-MM-dd}", new { @type = "date" })
         <br>
-        <input type="submit" value="Create a Cache" class="btn btn-dark">
+        <input type="submit" value="Create a Cache" class="btn btn-dark" http-equiv="refresh">
+        <meta http-equiv="refresh">
       }
       <br>
       </div>
