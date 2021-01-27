@@ -27,19 +27,16 @@ namespace GeoSquirrelClient.Models
 
     public static async Task Post(string newCache)
     {
-      RestClient client = new RestClient("http://locahost:5000/api");
+      RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches", Method.POST);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(newCache);
-      Console.WriteLine("Hello Svea");
-      Console.WriteLine(newCache);
       var response = await client.ExecuteTaskAsync(request);
-      Console.WriteLine(response);
     }
 
     public static async Task AddNewPlayer(Player newPlayer)
     {
-      RestClient client = new RestClient("http://locahost:5000/api");
+      RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"players", Method.POST);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(JsonConvert.SerializeObject(newPlayer));
