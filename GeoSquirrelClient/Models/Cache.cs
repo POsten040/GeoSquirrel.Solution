@@ -4,6 +4,7 @@ using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+
 namespace GeoSquirrelClient.Models
 {
   public class Cache
@@ -14,15 +15,18 @@ namespace GeoSquirrelClient.Models
     public decimal Longitude { get; set; }
     public DateTime DateCreated { get; set; }
     // public GeoLocation location { get; set; }
+    public virtual ApplicationUser User { get; set; } 
 
     public static List<Cache> GetCaches()
     {
       var apiCallTask = ApiHelper.GetAll();
+      Console.WriteLine(apiCallTask);
       var result = apiCallTask.Result;
-
+      Console.WriteLine(result);
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      Console.WriteLine(jsonResponse);
       List<Cache> cacheList = JsonConvert.DeserializeObject<List<Cache>>(jsonResponse.ToString());
-
+      Console.WriteLine(cacheList);
       return cacheList;
     }
 

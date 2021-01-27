@@ -3,13 +3,24 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using GeoSquirrelClient.Models;
 
 namespace GeoSquirrelClient.Controllers
 {
+  [Authorize]
   public class CachesController : Controller
   {
+    private readonly GeoSquirrelClientContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
+    public CachesController(UserManager<ApplicationUser> userManager, GeoSquirrelClientContext database)
+    {
+      _userManager = userManager;
+      _db = database;
+    }
     public IActionResult Index()
     {
       var allCaches = Cache.GetCaches();
