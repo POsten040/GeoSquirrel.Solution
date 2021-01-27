@@ -123,7 +123,7 @@ namespace GeoSquirrelClient.Models
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"players", Method.POST);
       request.AddHeader("Content-Type", "application/json");
-      request.AddJsonBody(newPlayer;
+      request.AddJsonBody(newPlayer);
       var response = await client.ExecuteTaskAsync(request);
     }
 

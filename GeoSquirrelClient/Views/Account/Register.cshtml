@@ -6,18 +6,23 @@
 
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
-<hr />
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+
+<div class="testbox">
+  <h1>Create An Account</h1>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
-    @Html.LabelFor(user => user.Email)
-    @Html.TextBoxFor(user=> user.Email)
-
-    @Html.LabelFor(user=> user.Password)
-    @Html.PasswordFor(user=> user.Password)
-
-    @Html.LabelFor(user=> user.ConfirmPassword)
-    @Html.PasswordFor(user=> user.ConfirmPassword)
-
-    <input type="submit" value="Register" />
+  <form action="/">
+  <hr>
+  <label id="icon" for="name"><i class="icon-envelope"></i></label>
+  <input id="Email" name="Email" type="text" value="" placeholder="username"/>
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input id="Password" name="Password" type="password" value="" placeholder="password" />
+  <label id="icon" for="name"><i class="icon-shield"></i></label>
+  <input id="ConfirmPassword" name="ConfirmPassword" type="password" value="" placeholder="confirm password"/>
+  <input type="submit" value="Register" class="btn btn-dark" id="register"/>
+  </form>
 }
+</div>

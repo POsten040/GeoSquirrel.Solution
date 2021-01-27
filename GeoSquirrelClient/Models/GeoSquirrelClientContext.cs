@@ -31,7 +31,7 @@ namespace GeoSquirrelClient.Models
         builder.Entity<Game>()
             .HasData(
                 new Game { GameId =1, Name = "Game 1"}, 
-                new Game { GameId = 2, Name = "Game 2"},
+                new Game { GameId = 2, Name = "Game 2"}
                 );
         }
     }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GeoSquirrelClient.Migrations
 {
-    public partial class ApplicationUser : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,22 +45,6 @@ namespace GeoSquirrelClient.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Caches",
-                columns: table => new
-                {
-                    CacheId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Latitude = table.Column<decimal>(nullable: false),
-                    Longitude = table.Column<decimal>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Caches", x => x.CacheId);
                 });
 
             migrationBuilder.CreateTable(
@@ -185,6 +169,29 @@ namespace GeoSquirrelClient.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Caches",
+                columns: table => new
+                {
+                    CacheId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Latitude = table.Column<decimal>(nullable: false),
+                    Longitude = table.Column<decimal>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Caches", x => x.CacheId);
+                    table.ForeignKey(
+                        name: "FK_Caches_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PlayerCaches",
                 columns: table => new
                 {
@@ -208,6 +215,27 @@ namespace GeoSquirrelClient.Migrations
                         principalTable: "Players",
                         principalColumn: "PlayerId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Caches",
+                columns: new[] { "CacheId", "DateCreated", "Latitude", "Longitude", "Name", "UserId" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2020, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.5252m, -122.7163m, "Pittock Mansion", null },
+                    { 2, new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.5051m, -122.6750m, "Portland", null },
+                    { 3, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23.88888888m, 13.55888885m, "Location 3", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Players",
+                columns: new[] { "PlayerId", "Email", "Name", "Password" },
+                values: new object[,]
+                {
+                    { 1, "svealinneawade@gmail.com", "Svea", null },
+                    { 2, "nathanschrader@icloud.com", "Nathan", null },
+                    { 3, "posten.coding@gmail.com", "Patrick", null },
+                    { 4, "randel.c.moore@gmail.com", "Randel", null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -248,6 +276,11 @@ namespace GeoSquirrelClient.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Caches_UserId",
+                table: "Caches",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PlayerCaches_CacheId",
                 table: "PlayerCaches",
                 column: "CacheId");
@@ -282,13 +315,13 @@ namespace GeoSquirrelClient.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
                 name: "Caches");
 
             migrationBuilder.DropTable(
                 name: "Players");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }
