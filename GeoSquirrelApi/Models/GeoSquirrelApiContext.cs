@@ -10,9 +10,10 @@ namespace GeoSquirrelApi.Models
             : base(options)
         {
         }
-
+        public DbSet <Game> Games { get; set; }
         public DbSet<Cache> Caches { get; set; }
         public DbSet<Player> Players {get; set; }
+        public DbSet<CacheGamePlayer> CacheGamePlayers { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
         builder.Entity<Cache>()

@@ -3,14 +3,16 @@ using System;
 using GeoSquirrelApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GeoSquirrelApi.Migrations
 {
     [DbContext(typeof(GeoSquirrelApiContext))]
-    partial class GeoSquirrelApiContextModelSnapshot : ModelSnapshot
+    [Migration("20210127212108_GameStuff")]
+    partial class GameStuff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,44 +64,6 @@ namespace GeoSquirrelApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GeoSquirrelApi.Models.CacheGamePlayer", b =>
-                {
-                    b.Property<int>("CacheGamePlayerId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("CacheId");
-
-                    b.Property<bool>("FoundCache");
-
-                    b.Property<int>("GameId");
-
-                    b.Property<int>("PlayerId");
-
-                    b.HasKey("CacheGamePlayerId");
-
-                    b.HasIndex("CacheId");
-
-                    b.HasIndex("GameId");
-
-                    b.HasIndex("PlayerId");
-
-                    b.ToTable("CacheGamePlayers");
-                });
-
-            modelBuilder.Entity("GeoSquirrelApi.Models.Game", b =>
-                {
-                    b.Property<int>("GameId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(25);
-
-                    b.HasKey("GameId");
-
-                    b.ToTable("Games");
-                });
-
             modelBuilder.Entity("GeoSquirrelApi.Models.Player", b =>
                 {
                     b.Property<int>("PlayerId")
@@ -140,24 +104,6 @@ namespace GeoSquirrelApi.Migrations
                             Email = "randel.c.moore@gmail.com",
                             Name = "Randel"
                         });
-                });
-
-            modelBuilder.Entity("GeoSquirrelApi.Models.CacheGamePlayer", b =>
-                {
-                    b.HasOne("GeoSquirrelApi.Models.Cache", "Cache")
-                        .WithMany()
-                        .HasForeignKey("CacheId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GeoSquirrelApi.Models.Game", "Game")
-                        .WithMany()
-                        .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GeoSquirrelApi.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace GeoSquirrelClient.Models
+namespace GeoSquirrelApi.Models
 {
     public class CacheGamePlayer
     {
@@ -18,4 +17,3 @@ namespace GeoSquirrelClient.Models
         public Player Player { get; set; }
     }
 }
-    

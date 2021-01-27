@@ -8,45 +8,41 @@
 <div class="img-container" text-align="center">
 <img src="/img/GeoSquirrel.png" alt="GeoSquirrel" width="300" height="300" text-align="center">
     <div class="login-container">
+
+@* <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+<div class="testbox"> *@
+
+    @* <h1>Login</h1>
+@using (Html.BeginForm())
+{
+    <form action="/">
+    <hr>
+    <label id="icon" for="name"><i class="icon-envelope"></i></label>
+    <input id="Email" name="Email" type="text" value="" placeholder="username"/>
+    <label id="icon" for="name"><i class="icon-shield"></i></label>
+    <input id="Password" name="Password" type="password" value="" placeholder="password" />
+    <input type="submit" value="Login" class="btn btn-dark"/>
+    <br>
+    <br>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Create An Account</a>
+        @using (Html.BeginForm("LogOff", "Account"))
+    {
+        <input type="submit" class="btn btn-dark" value="Log out" id="logout"/>
         <br>
-        <p class="button">@Html.ActionLink("Login", "Login", "Account")</p>
-        <p class="button">@Html.ActionLink("Create an account", "Register", "Account")</p>
-    </div>
-</div>
+
+    }
+    </form>
+}
+</div> *@
+
+<a  class="btn btn-light" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+<br>
+<br>
+<a  class="btn btn-light" asp-area="" asp-controller="Account" asp-action="Register">Create An Account</a>
 <br>
 
-@* <div id="map"></div>
-
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        #map{
-            height: 500px;
-            width: 100%;
-        }
-    </style>
-    <script>
-        function initMap() {
-            var portland = {lat: 45.5051, lng: 122.6750 }
-            var dynamicLoc = {lat: (parseFloat((document.getElementById("modelLat").textContent))), 
-                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom:  10, 
-                center: dynamicLoc
-            });
-            var marker = new google.maps.Marker({
-                position: portland,
-                map: map
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script> *@
-    
-
-
-
+<br>
 <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 @* <hr /> *@
 <h3>GeoSquirrel Development Team</h3>
@@ -68,22 +64,3 @@
 
 
 
-
-
-@* <div class="text-center">
-    <p>@Html.ActionLink("Caches List", "Index", "Caches")</p>
-</div> *@
-
-@* <ol>
-@foreach (Cache cache in Model)
-{
-    <ul>
-        <li>ID: @cache.CacheId</li>
-        <li>Name: @cache.Name</li>
-        <li>Hours: @cache.Latitude</li>
-        <li>Industry: @cache.Longitude</li>
-        <li>Address: @cache.DateCreated</li>
-    </ul>
-    <br>
-}
-</ol> *@

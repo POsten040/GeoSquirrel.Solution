@@ -11,8 +11,11 @@ namespace GeoSquirrelClient.Models
   public class Cache
   {
     public int CacheId { get; set; }
-    public string Name{ get; set; }
+    [DisplayName("Name:")]
+    public string Name { get; set; }
+    [DisplayName("Latitude")]
     public decimal Latitude { get; set; }
+    [DisplayName("Longitude")]
     public decimal Longitude { get; set; }
     [DisplayName("Date Created")]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]

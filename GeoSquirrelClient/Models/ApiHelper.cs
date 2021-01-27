@@ -63,13 +63,13 @@ namespace GeoSquirrelClient.Models
       return response.Content;
     }
 
-        public static async Task<string> GameGet(int id)
-      {
-        RestClient client = new RestClient("http://localhost:5000/api");
-        RestRequest request = new RestRequest($"games/{id}", Method.GET);
-        var response = await client.ExecuteTaskAsync(request);
-        return response.Content;
-      }
+      public static async Task<string> GameGet(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"games/{id}", Method.GET);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
 
     public static async Task GamePost(string newGame)
     {

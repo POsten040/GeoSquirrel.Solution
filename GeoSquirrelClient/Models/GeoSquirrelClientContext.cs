@@ -9,7 +9,7 @@ namespace GeoSquirrelClient.Models
         public virtual DbSet<Cache> Caches { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Game> Games { get; set; }
-        public DbSet<CacheGamePlayer> CachePlayers { get; set; }
+        public DbSet<CacheGamePlayer> CacheGamePlayers { get; set; }
         public GeoSquirrelClientContext(DbContextOptions options) : base(options)
         { }
         protected override void OnModelCreating(ModelBuilder builder)
