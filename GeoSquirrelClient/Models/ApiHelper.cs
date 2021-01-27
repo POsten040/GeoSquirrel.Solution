@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 using Newtonsoft.Json;
+using System;
 
 namespace GeoSquirrelClient.Models
 {
@@ -28,9 +29,13 @@ namespace GeoSquirrelClient.Models
       RestRequest request = new RestRequest($"caches", Method.POST);
       request.AddHeader("Content-Type", "application/json");
       request.AddJsonBody(newCache);
+      Console.WriteLine("Hello Svea");
+      Console.WriteLine(newCache);
       var response = await client.ExecuteTaskAsync(request);
+      Console.WriteLine(response);
     }
 
+<<<<<<< HEAD
     public static async Task AddNewPlayer(Player newPlayer)
     {
       RestClient client = new RestClient("http://locahost:5000/api");
@@ -39,6 +44,16 @@ namespace GeoSquirrelClient.Models
       request.AddJsonBody(JsonConvert.SerializeObject(newPlayer));
       var response = await client.ExecuteTaskAsync(request);
     }
+=======
+    // public static async Task AddNewUser(User newUser)
+    // {
+    //   RestClient client = new RestClient("http://locahost:5000/api");
+    //   RestRequest request = new RestRequest($"users", Method.POST);
+    //   request.AddHeader("Content-Type", "application/json");
+    //   request.AddJsonBody(JsonConvert.SerializeObject(newUser));
+    //   var response = await client.ExecuteTaskAsync(request);
+    // }
+>>>>>>> 9c548f64ca26ce9b7dd3f1de80189bcd83ae834a
 
     public static async Task Put(int id, string newCache)
     {

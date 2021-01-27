@@ -24,6 +24,45 @@
 </div>
 <br>
 
+<div id="map"></div>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #map{
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function initMap() {
+            var portland = {lat: 45.5051, lng: 122.6750 }
+            var dynamicLoc = {lat: (parseFloat((document.getElementById("modelLat").textContent))), 
+                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom:  10, 
+                center: dynamicLoc
+            });
+            var marker = new google.maps.Marker({
+                position: portland,
+                map: map
+            });
+            var marker2 = new google.maps.Marker({
+                position: beaverton,
+                map: map
+            });
+            var marker3 = new google.maps.Marker({
+                position: dynamicLoc,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
+    
+
+
 
 <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 @* <hr /> *@

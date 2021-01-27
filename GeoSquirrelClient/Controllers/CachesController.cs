@@ -65,6 +65,7 @@ namespace GeoSquirrelClient.Controllers
       Cache.Delete(id);
       return RedirectToAction("Index");
     }
+
     public IActionResult Create()
     {
       return View();

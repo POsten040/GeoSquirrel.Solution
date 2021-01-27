@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel;
 
 
 namespace GeoSquirrelClient.Models
@@ -13,6 +14,8 @@ namespace GeoSquirrelClient.Models
     public string Name{ get; set; }
     public decimal Latitude { get; set; }
     public decimal Longitude { get; set; }
+    [DisplayName("Date Created")]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     public DateTime DateCreated { get; set; }
     // public GeoLocation location { get; set; }
     public virtual ApplicationUser User { get; set; } 

@@ -17,8 +17,8 @@ namespace GeoSquirrelApi.Models
         {
         builder.Entity<Cache>()
             .HasData(
-                new Cache { CacheId = 1, Name = "Location 1", Latitude = 17.88888888m, Longitude = 7.58888855m, DateCreated = new DateTime(2020, 12, 1)},
-                new Cache { CacheId = 2, Name = "Location 2", Latitude = 20.88888888m, Longitude = 10.58888855m, DateCreated = new DateTime(2020, 8, 1)},
+                new Cache { CacheId = 1, Name = "Pittock Mansion", Latitude = 45.5252m, Longitude = -122.7163m, DateCreated = new DateTime(2020, 12, 1)},
+                new Cache { CacheId = 2, Name = "Portland", Latitude = 45.5051m, Longitude = -122.6750m, DateCreated = new DateTime(2020, 8, 1)},
                 new Cache { CacheId = 3, Name = "Location 3", Latitude = 23.88888888m, Longitude = 13.55888885m, DateCreated = new DateTime(2020, 4, 1)}
             );
         builder.Entity<User>()
