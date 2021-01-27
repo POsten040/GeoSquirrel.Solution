@@ -9,8 +9,10 @@ namespace GeoSquirrelClient.Models
   {
     public static async Task<string> GetAll()
     {
+      Console.WriteLine("GET ALL");
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches", Method.GET);
+      Console.WriteLine(request);
       var response = await client.ExecuteTaskAsync(request);
       return response.Content;
     }
@@ -35,7 +37,6 @@ namespace GeoSquirrelClient.Models
       Console.WriteLine(response);
     }
 
-<<<<<<< HEAD
     public static async Task AddNewPlayer(Player newPlayer)
     {
       RestClient client = new RestClient("http://locahost:5000/api");
@@ -44,16 +45,6 @@ namespace GeoSquirrelClient.Models
       request.AddJsonBody(JsonConvert.SerializeObject(newPlayer));
       var response = await client.ExecuteTaskAsync(request);
     }
-=======
-    // public static async Task AddNewUser(User newUser)
-    // {
-    //   RestClient client = new RestClient("http://locahost:5000/api");
-    //   RestRequest request = new RestRequest($"users", Method.POST);
-    //   request.AddHeader("Content-Type", "application/json");
-    //   request.AddJsonBody(JsonConvert.SerializeObject(newUser));
-    //   var response = await client.ExecuteTaskAsync(request);
-    // }
->>>>>>> 9c548f64ca26ce9b7dd3f1de80189bcd83ae834a
 
     public static async Task Put(int id, string newCache)
     {

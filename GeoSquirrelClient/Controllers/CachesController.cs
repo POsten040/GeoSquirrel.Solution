@@ -21,7 +21,7 @@ namespace GeoSquirrelClient.Controllers
       _userManager = userManager;
       _db = database;
     }
-    public IActionResult Index()
+    public ActionResult Index()
     {
       var allCaches = Cache.GetCaches();
       return View(allCaches);
@@ -33,19 +33,19 @@ namespace GeoSquirrelClient.Controllers
     // }
 
     [HttpPost]
-    public IActionResult Index(Cache cache)
+    public ActionResult Index(Cache cache)
     {
       Cache.Post(cache);
       return RedirectToAction("Index");
     }
 
-    public IActionResult Details(int id)
+    public ActionResult Details(int id)
     {
       var cache = Cache.GetDetails(id);
       return View(cache);
     }
 
-    public IActionResult Edit(int id)
+    public ActionResult Edit(int id)
     {
       var cache = Cache.GetDetails(id);
       return View(cache);
@@ -53,26 +53,26 @@ namespace GeoSquirrelClient.Controllers
 
 
     [HttpPost]
-    public IActionResult Details(int id, Cache cache)
+    public ActionResult Details(int id, Cache cache)
     {
       cache.CacheId = id;
       Cache.Put(cache);
       return RedirectToAction("Details", id);
     }
 
-    public IActionResult Delete(int id)
+    public ActionResult Delete(int id)
     {
       Cache.Delete(id);
       return RedirectToAction("Index");
     }
 
-    public IActionResult Create()
+    public ActionResult Create()
     {
       return View();
     }
 
     [HttpPost]
-    public IActionResult Create(Cache cache)
+    public ActionResult Create(Cache cache)
     {
       Cache.Post(cache);
       return RedirectToAction("Index");

@@ -25,6 +25,9 @@ namespace GeoSquirrelClient.Models
       var apiCallTask = ApiHelper.GetAll();
       var result = apiCallTask.Result;
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
+      Console.WriteLine(jsonResponse);
+      Console.WriteLine("JSON ABOVE ABOVE ABOVE");
+
       List<Cache> cacheList = JsonConvert.DeserializeObject<List<Cache>>(jsonResponse.ToString());
       return cacheList;
     }
