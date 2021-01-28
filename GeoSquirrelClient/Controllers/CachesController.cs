@@ -11,7 +11,7 @@ using GeoSquirrelClient.Models;
 
 namespace GeoSquirrelClient.Controllers
 {
-  [Authorize]
+  // [Authorize]
   public class CachesController : Controller
   {
     private readonly GeoSquirrelClientContext _db;

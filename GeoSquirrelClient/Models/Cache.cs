@@ -11,7 +11,7 @@ namespace GeoSquirrelClient.Models
   public class Cache
   {
     public int CacheId { get; set; }
-    [DisplayName("Name: ")]
+    [DisplayName("Name:")]
     public string Name { get; set; }
     [DisplayName("Latitude: ")]
     public decimal Latitude { get; set; }

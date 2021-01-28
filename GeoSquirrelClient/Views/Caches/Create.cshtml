@@ -1,7 +1,7 @@
 @model GeoSquirrelClient.Models.Cache
 @using Microsoft.AspNetCore.Identity;
 
-
+<br>
 <div class="card">
   <div class= "card-body">
     <h2 class= "card-title">Cache Creator: </h2>
@@ -32,3 +32,71 @@
       <a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Index">Game List</a>
   </div>
 </div>
+<br>
+@* GOOGLE MAPS JAVASCRIPT API / GEOLOCATION *@
+<section id="location">
+  <h1>Here's Your Current GeoLocation:</h1>
+  <p id="location-info"></p>
+  <article id="location-map">Your Location</article>
+</section>
+
+<style>
+    #location-map{
+      width: 100%;
+      height: 65vh;
+      margin: 0 auto;
+      background-color: rgba(216, 216, 216, 1);
+      padding: 1.2em;
+    }
+</style>
+
+<script>
+  const locationInfo = document.querySelector('#location-info');
+
+  function getLocation()  {
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      @* locationInfo.innerHTML = `You appear to be at: ${position.coords.latitude}, ${position.coords.longitude}`; *@
+      var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var latValue = position.coords.latitude;
+      var lngValue = position.coords.longitude;
+      document.getElementById("Latitude").value = latValue;
+      document.getElementById("Longitude").value = lngValue;
+      
+      initMap(pos);
+    });
+  }
+
+  var test = navigator.geolocation.getCurrentPosition(function(position) {
+      new google.maps.LatLng(position.coords.latitude);
+    });
+
+
+  function initMap(location)  {
+
+    map = new google.maps.Map(document.querySelector('#location-map'), {
+      center: location,
+      zoom: 16,
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      mapTypeIds: ["roadmap", "terrain"]["satellite"],
+      }
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      title: 'You are here!',
+    });
+    const infowindow = new google.maps.InfoWindow({
+    content: "<p>GeoSquirrel these coordinates!  " + marker.getPosition() + "</p>",
+    });
+    google.maps.event.addListener(marker, "click", () => {
+    infowindow.open(map, marker);
+    });
+  }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=getLocation"></script>
+
+<br><br>

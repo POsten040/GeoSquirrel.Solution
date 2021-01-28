@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@model GeoSquirrelClient.Models.Player
+@using Microsoft.AspNetCore.Identity;
+
+
+<div class="card">
+  <div class= "card-body">
+    <h2 class= "card-title">Player Creator: </h2>
+      <div class= "card-text">
+      @using (Html.BeginForm())
+      {
+        @Html.Hidden("UserEmail", $"{User.Identity.Name}")
+        @Html.LabelFor(model => model.PlayerId)
+        <input id="PlayerId" name="PlayerId" type="text">
+        <br>
+        @Html.LabelFor(model => model.Name)
+        <input id="Name" name="Name" type="text">
+        <br>
+        @Html.LabelFor(model => model.UserEmail)
+        <input id="UserEmail" name="UserEmail" type="text">
+        <br>
+        <br>
+        <input type="submit" value="Create a Player" class="btn btn-dark" http-equiv="refresh">
+        <meta http-equiv="refresh">
+      }
+      <br>
+      </div>
+      <hr />
+      <a  class="btn btn-light" asp-area="" asp-controller="Caches" asp-action="Index">Cache List</a>
+      <a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Index">Game List</a>
+      <a  class="btn btn-light" asp-area="" asp-controller="Players" asp-action="Index">Player List</a>
+  </div>
+</div> 

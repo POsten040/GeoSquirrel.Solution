@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>@Model.Name</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"/ >
+<table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@Model.PlayerId</td>
+                    <td>@Model.Name</td>
+                    <td>@Model.UserEmail</td>
+                </tr>
+        </tbody>
+        <a class="btn btn-light" href="/Players">Return To Players</a>
+        <br>
+        <br>
+    </table>
+
+<a class="btn btn-dark" href="/Players/Edit/@(Model.PlayerId)">Edit @Model.Name</a>
+<a class= "btn btn-dark" href="/Players/Delete/@(Model.PlayerId)">Delete  @Model.Name</a>
+<hr />

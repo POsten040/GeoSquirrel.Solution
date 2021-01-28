@@ -48,14 +48,44 @@ namespace GeoSquirrelClient.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Caches",
+                columns: table => new
+                {
+                    CacheId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Latitude = table.Column<decimal>(nullable: false),
+                    Longitude = table.Column<decimal>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    UserEmail = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Caches", x => x.CacheId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Games",
+                columns: table => new
+                {
+                    GameId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    UserEmail = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Games", x => x.GameId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Players",
                 columns: table => new
                 {
                     PlayerId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true)
+                    UserEmail = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -169,73 +199,136 @@ namespace GeoSquirrelClient.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Caches",
+                name: "CacheGame",
                 columns: table => new
                 {
-                    CacheId = table.Column<int>(nullable: false)
+                    CacheGameId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Latitude = table.Column<decimal>(nullable: false),
-                    Longitude = table.Column<decimal>(nullable: false),
-                    DateCreated = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Caches", x => x.CacheId);
-                    table.ForeignKey(
-                        name: "FK_Caches_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PlayerCaches",
-                columns: table => new
-                {
-                    PlayerCacheId = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PlayerId = table.Column<int>(nullable: false),
+                    GameId = table.Column<int>(nullable: false),
                     CacheId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PlayerCaches", x => x.PlayerCacheId);
+                    table.PrimaryKey("PK_CacheGame", x => x.CacheGameId);
                     table.ForeignKey(
-                        name: "FK_PlayerCaches_Caches_CacheId",
+                        name: "FK_CacheGame_Caches_CacheId",
                         column: x => x.CacheId,
                         principalTable: "Caches",
                         principalColumn: "CacheId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PlayerCaches_Players_PlayerId",
+                        name: "FK_CacheGame_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "GamePlayer",
+                columns: table => new
+                {
+                    GamePlayerId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PlayerId = table.Column<int>(nullable: false),
+                    GameId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GamePlayer", x => x.GamePlayerId);
+                    table.ForeignKey(
+                        name: "FK_GamePlayer_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GamePlayer_Players_PlayerId",
                         column: x => x.PlayerId,
                         principalTable: "Players",
                         principalColumn: "PlayerId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "CacheGamePlayers",
+                columns: table => new
+                {
+                    CacheGamePlayerId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    CacheGameId = table.Column<int>(nullable: false),
+                    GamePlayerId = table.Column<int>(nullable: false),
+                    FoundCache = table.Column<bool>(nullable: false),
+                    CacheId = table.Column<int>(nullable: true),
+                    GameId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CacheGamePlayers", x => x.CacheGamePlayerId);
+                    table.ForeignKey(
+                        name: "FK_CacheGamePlayers_CacheGame_CacheGameId",
+                        column: x => x.CacheGameId,
+                        principalTable: "CacheGame",
+                        principalColumn: "CacheGameId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CacheGamePlayers_Caches_CacheId",
+                        column: x => x.CacheId,
+                        principalTable: "Caches",
+                        principalColumn: "CacheId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CacheGamePlayers_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CacheGamePlayers_GamePlayer_GamePlayerId",
+                        column: x => x.GamePlayerId,
+                        principalTable: "GamePlayer",
+                        principalColumn: "GamePlayerId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "Caches",
-                columns: new[] { "CacheId", "DateCreated", "Latitude", "Longitude", "Name", "UserId" },
+                columns: new[] { "CacheId", "DateCreated", "Latitude", "Longitude", "Name", "UserEmail" },
                 values: new object[,]
                 {
                     { 1, new DateTime(2020, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.5252m, -122.7163m, "Pittock Mansion", null },
+                    { 13, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 28.644800m, -77.216721m, "New Dehli", null },
+                    { 12, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 43.651070m, -73.561668m, "Toronto", null },
+                    { 11, new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 28.3949m, 84.1240m, "Nepal", null },
+                    { 9, new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23.185884m, 79.974380m, "Jabalpur", null },
+                    { 8, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 22.572645m, 88.363892m, "kolkataindia", null },
+                    { 10, new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 9.0820m, 8.6753m, "Nigeria", null },
+                    { 6, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 55.751244m, 37.618423m, "Russia", null },
+                    { 5, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 40.367474m, -82.996216m, "Ohio", null },
+                    { 4, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 20.798363m, -156.331924m, "Maui", null },
+                    { 3, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 53.350140m, -6.266155m, "Ireland", null },
                     { 2, new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.5051m, -122.6750m, "Portland", null },
-                    { 3, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 23.88888888m, 13.55888885m, "Location 3", null }
+                    { 7, new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 45.508888m, -73.561668m, "Montreal", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "GameId", "Name", "UserEmail" },
+                values: new object[,]
+                {
+                    { 1, "Game 1", null },
+                    { 2, "Game 2", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Players",
-                columns: new[] { "PlayerId", "Email", "Name", "Password" },
+                columns: new[] { "PlayerId", "Name", "UserEmail" },
                 values: new object[,]
                 {
-                    { 1, "svealinneawade@gmail.com", "Svea", null },
-                    { 2, "nathanschrader@icloud.com", "Nathan", null },
-                    { 3, "posten.coding@gmail.com", "Patrick", null },
-                    { 4, "randel.c.moore@gmail.com", "Randel", null }
+                    { 3, "Patrick", "posten.coding@gmail.com" },
+                    { 1, "Svea", "svealinneawade@gmail.com" },
+                    { 2, "Nathan", "nathanschrader@icloud.com" },
+                    { 4, "Randel", "randel.c.moore@gmail.com" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -276,18 +369,43 @@ namespace GeoSquirrelClient.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Caches_UserId",
-                table: "Caches",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PlayerCaches_CacheId",
-                table: "PlayerCaches",
+                name: "IX_CacheGame_CacheId",
+                table: "CacheGame",
                 column: "CacheId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlayerCaches_PlayerId",
-                table: "PlayerCaches",
+                name: "IX_CacheGame_GameId",
+                table: "CacheGame",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CacheGamePlayers_CacheGameId",
+                table: "CacheGamePlayers",
+                column: "CacheGameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CacheGamePlayers_CacheId",
+                table: "CacheGamePlayers",
+                column: "CacheId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CacheGamePlayers_GameId",
+                table: "CacheGamePlayers",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CacheGamePlayers_GamePlayerId",
+                table: "CacheGamePlayers",
+                column: "GamePlayerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GamePlayer_GameId",
+                table: "GamePlayer",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GamePlayer_PlayerId",
+                table: "GamePlayer",
                 column: "PlayerId");
         }
 
@@ -309,19 +427,28 @@ namespace GeoSquirrelClient.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "PlayerCaches");
+                name: "CacheGamePlayers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "CacheGame");
+
+            migrationBuilder.DropTable(
+                name: "GamePlayer");
+
+            migrationBuilder.DropTable(
                 name: "Caches");
 
             migrationBuilder.DropTable(
-                name: "Players");
+                name: "Games");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Players");
         }
     }
 }

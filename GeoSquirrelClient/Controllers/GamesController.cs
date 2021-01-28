@@ -9,6 +9,16 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using GeoSquirrelClient.Models;
 
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
+
 namespace GeoSquirrelClient.Controllers
 {
   [Authorize]
@@ -29,10 +39,11 @@ namespace GeoSquirrelClient.Controllers
 
     public ActionResult Details(int id)
     {
+      // Viewbag.Players = new SelectList(Player.GetPlayers(), "PlayerId", "Name");
       var game = Game.GetDetails(id);
-      return View();
+      return View(game);
     }
-    
+  
     public ActionResult Edit(int id)
     {
       var game = Game.GetDetails(id);
@@ -64,11 +75,14 @@ namespace GeoSquirrelClient.Controllers
       Game.Post(game);
       return RedirectToAction("Index");
     }
-    [HttpPost]
-    public ActionResult JoinGame(Game game)
-    {
-      Game.Post(game);
-      return RedirectToAction("Index");
-    }
+    // [HttpPost]
+    // public ActionResult AddPlayer(Game game, int playerId)
+    // {
+    //   Game.Post(game, playerId);
+    //   return RedirectToAction("Details", new {id = game.gameId});
+    // }
   }
 }
+
+// // Game = flavor
+// // player = treat

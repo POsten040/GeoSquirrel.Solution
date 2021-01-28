@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GeoSquirrelClient.Migrations
 {
     [DbContext(typeof(GeoSquirrelClientContext))]
-    [Migration("20210127211756_GameStuff")]
-    partial class GameStuff
+    [Migration("20210128202811_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,11 +82,9 @@ namespace GeoSquirrelClient.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserEmail");
 
                     b.HasKey("CacheId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Caches");
 
@@ -111,10 +109,108 @@ namespace GeoSquirrelClient.Migrations
                         {
                             CacheId = 3,
                             DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Latitude = 23.88888888m,
-                            Longitude = 13.55888885m,
-                            Name = "Location 3"
+                            Latitude = 53.350140m,
+                            Longitude = -6.266155m,
+                            Name = "Ireland"
+                        },
+                        new
+                        {
+                            CacheId = 4,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 20.798363m,
+                            Longitude = -156.331924m,
+                            Name = "Maui"
+                        },
+                        new
+                        {
+                            CacheId = 5,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 40.367474m,
+                            Longitude = -82.996216m,
+                            Name = "Ohio"
+                        },
+                        new
+                        {
+                            CacheId = 6,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 55.751244m,
+                            Longitude = 37.618423m,
+                            Name = "Russia"
+                        },
+                        new
+                        {
+                            CacheId = 7,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 45.508888m,
+                            Longitude = -73.561668m,
+                            Name = "Montreal"
+                        },
+                        new
+                        {
+                            CacheId = 8,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 22.572645m,
+                            Longitude = 88.363892m,
+                            Name = "kolkataindia"
+                        },
+                        new
+                        {
+                            CacheId = 9,
+                            DateCreated = new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 23.185884m,
+                            Longitude = 79.974380m,
+                            Name = "Jabalpur"
+                        },
+                        new
+                        {
+                            CacheId = 10,
+                            DateCreated = new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 9.0820m,
+                            Longitude = 8.6753m,
+                            Name = "Nigeria"
+                        },
+                        new
+                        {
+                            CacheId = 11,
+                            DateCreated = new DateTime(2020, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 28.3949m,
+                            Longitude = 84.1240m,
+                            Name = "Nepal"
+                        },
+                        new
+                        {
+                            CacheId = 12,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 43.651070m,
+                            Longitude = -73.561668m,
+                            Name = "Toronto"
+                        },
+                        new
+                        {
+                            CacheId = 13,
+                            DateCreated = new DateTime(2020, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Latitude = 28.644800m,
+                            Longitude = -77.216721m,
+                            Name = "New Dehli"
                         });
+                });
+
+            modelBuilder.Entity("GeoSquirrelClient.Models.CacheGame", b =>
+                {
+                    b.Property<int>("CacheGameId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CacheId");
+
+                    b.Property<int>("GameId");
+
+                    b.HasKey("CacheGameId");
+
+                    b.HasIndex("CacheId");
+
+                    b.HasIndex("GameId");
+
+                    b.ToTable("CacheGame");
                 });
 
             modelBuilder.Entity("GeoSquirrelClient.Models.CacheGamePlayer", b =>
@@ -122,23 +218,27 @@ namespace GeoSquirrelClient.Migrations
                     b.Property<int>("CacheGamePlayerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CacheId");
+                    b.Property<int>("CacheGameId");
+
+                    b.Property<int?>("CacheId");
 
                     b.Property<bool>("FoundCache");
 
-                    b.Property<int>("GameId");
+                    b.Property<int?>("GameId");
 
-                    b.Property<int>("PlayerId");
+                    b.Property<int>("GamePlayerId");
 
                     b.HasKey("CacheGamePlayerId");
+
+                    b.HasIndex("CacheGameId");
 
                     b.HasIndex("CacheId");
 
                     b.HasIndex("GameId");
 
-                    b.HasIndex("PlayerId");
+                    b.HasIndex("GamePlayerId");
 
-                    b.ToTable("CachePlayers");
+                    b.ToTable("CacheGamePlayers");
                 });
 
             modelBuilder.Entity("GeoSquirrelClient.Models.Game", b =>
@@ -147,6 +247,8 @@ namespace GeoSquirrelClient.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("UserEmail");
 
                     b.HasKey("GameId");
 
@@ -165,22 +267,34 @@ namespace GeoSquirrelClient.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GeoSquirrelClient.Models.GamePlayer", b =>
+                {
+                    b.Property<int>("GamePlayerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("GameId");
+
+                    b.Property<int>("PlayerId");
+
+                    b.HasKey("GamePlayerId");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("GamePlayer");
+                });
+
             modelBuilder.Entity("GeoSquirrelClient.Models.Player", b =>
                 {
                     b.Property<int>("PlayerId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Email");
-
                     b.Property<string>("Name");
 
-                    b.Property<string>("Password");
-
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserEmail");
 
                     b.HasKey("PlayerId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Players");
 
@@ -188,26 +302,26 @@ namespace GeoSquirrelClient.Migrations
                         new
                         {
                             PlayerId = 1,
-                            Email = "svealinneawade@gmail.com",
-                            Name = "Svea"
+                            Name = "Svea",
+                            UserEmail = "svealinneawade@gmail.com"
                         },
                         new
                         {
                             PlayerId = 2,
-                            Email = "nathanschrader@icloud.com",
-                            Name = "Nathan"
+                            Name = "Nathan",
+                            UserEmail = "nathanschrader@icloud.com"
                         },
                         new
                         {
                             PlayerId = 3,
-                            Email = "posten.coding@gmail.com",
-                            Name = "Patrick"
+                            Name = "Patrick",
+                            UserEmail = "posten.coding@gmail.com"
                         },
                         new
                         {
                             PlayerId = 4,
-                            Email = "randel.c.moore@gmail.com",
-                            Name = "Randel"
+                            Name = "Randel",
+                            UserEmail = "randel.c.moore@gmail.com"
                         });
                 });
 
@@ -318,14 +432,7 @@ namespace GeoSquirrelClient.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("GeoSquirrelClient.Models.Cache", b =>
-                {
-                    b.HasOne("GeoSquirrelClient.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("GeoSquirrelClient.Models.CacheGamePlayer", b =>
+            modelBuilder.Entity("GeoSquirrelClient.Models.CacheGame", b =>
                 {
                     b.HasOne("GeoSquirrelClient.Models.Cache", "Cache")
                         .WithMany()
@@ -336,18 +443,40 @@ namespace GeoSquirrelClient.Migrations
                         .WithMany()
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GeoSquirrelClient.Models.CacheGamePlayer", b =>
+                {
+                    b.HasOne("GeoSquirrelClient.Models.CacheGame", "CacheGame")
+                        .WithMany()
+                        .HasForeignKey("CacheGameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GeoSquirrelClient.Models.Cache", "Cache")
+                        .WithMany()
+                        .HasForeignKey("CacheId");
+
+                    b.HasOne("GeoSquirrelClient.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId");
+
+                    b.HasOne("GeoSquirrelClient.Models.GamePlayer", "GamePlayer")
+                        .WithMany()
+                        .HasForeignKey("GamePlayerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GeoSquirrelClient.Models.GamePlayer", b =>
+                {
+                    b.HasOne("GeoSquirrelClient.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("GeoSquirrelClient.Models.Player", "Player")
                         .WithMany()
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("GeoSquirrelClient.Models.Player", b =>
-                {
-                    b.HasOne("GeoSquirrelClient.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

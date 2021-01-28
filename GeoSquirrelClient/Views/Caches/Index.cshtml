@@ -2,7 +2,139 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h1>Live GeoCaches</h1>
+@* Google/GeoCode Map *@
+<h1>Live GeoCaches Around the World!</h1>
+<hr />
+<div id="map"></div>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #map{
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function initMap() {
+            //var myLatLng = { lat: 37.4221, lng: -122.0841 };
+            var maui = { lat: 20.798363, lng: -156.331924 };
+            var ohio = { lat: 40.367474, lng: -82.996216 };
+            var pennsylvania = { lat: 39.952583, lng: -75.165222 };
+            var russia = { lat: 55.751244, lng: 37.618423};
+            var ndakota = { lat: 47.650589, lng: -100.437012 };
+            var kolkataindia = { lat: 22.572645, lng: 88.363892 };
+            var montreal = { lat: 45.508888, lng: -73.561668 };
+            var toronto = { lat: 43.651070, lng: -79.347015 };
+            var newdelhi = { lat: 28.644800, lng: 77.216721 };
+            var nepal = { lat: 28.3949, lng: 84.1240 };
+            var nigeria = { lat: 9.0820, lng: 8.6753 };
+            var jabalpur = { lat: 23.185884, lng: 79.974380 };
+            var northpole = { lat: 90.0000, lng: 135.0000 };
+            var southamerica = { lat: 8.7832, lng: 55.4915 };
+            var australia = { lat: 25.2744, lng: 133.7751 };
+            var maldives = { lat: 1.924992, lng: 73.399658 };
+            var manaus = { lat: -3.117034, lng: -60.025780 };
+            var southpole = { lat: 90.0000, lng: 45.0000 };
+            var dynamicLoc = { lat: (parseFloat((document.getElementById("modelLat").textContent))), 
+                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
+            var map = new google.maps.Map(document.getElementById("map"), {
+                zoom:  2, 
+                center: dynamicLoc,
+                streetViewControl: true,
+                title: "Testing2 Title"
+            });
+            var dynamicLoc = new google.maps.Marker({
+                position: dynamicLoc,
+                map: map,
+                title: "dynamicloc"
+            });
+            var maui = new google.maps.Marker({
+                position: maui,
+                map: map,
+                title: "maui"
+            });
+            var ohio = new google.maps.Marker({
+                position: ohio,
+                map: map
+            });
+            var pennsylvania = new google.maps.Marker({
+                position: pennsylvania,
+                map: map
+            });
+            var russia = new google.maps.Marker({
+                position: russia,
+                map: map
+            });
+            var ndakota = new google.maps.Marker({
+                position: ndakota,
+                map: map
+            });
+            var kolkataindia = new google.maps.Marker({
+                position: kolkataindia,
+                map: map
+            });
+            var montreal = new google.maps.Marker({
+                position: montreal,
+                map: map
+            });
+            var toronto = new google.maps.Marker({
+                position: toronto,
+                map: map
+            });
+            var newdelhi = new google.maps.Marker({
+                position: newdelhi,
+                map: map
+            });
+            var nepal = new google.maps.Marker({
+                position: nepal,
+                map: map
+            });
+            var nigeria = new google.maps.Marker({
+                position: nigeria,
+                map: map
+            });
+            var jabalpur = new google.maps.Marker({
+                position: jabalpur,
+                map: map
+            });
+            var northpole = new google.maps.Marker({
+                position: northpole,
+                map: map
+            });
+            var southamerica = new google.maps.Marker({
+                position: southamerica,
+                map: map
+            });
+            var australia = new google.maps.Marker({
+                position: australia,
+                map: map
+            });
+            var maldives = new google.maps.Marker({
+                position: maldives,
+                map: map
+            });
+            var manaus = new google.maps.Marker({
+                position: maldives,
+                map: map
+            });
+            var southpole = new google.maps.Marker({
+                position: southpole,
+                map: map
+            });
+            const infowindow = new google.maps.InfoWindow({
+            content: "<p>GeoSquirrel these coordinates!  " + marker.getPosition() + "</p>",
+            });
+            google.maps.event.addListener(marker, "click", () => {
+            infowindow.open(map, marker);
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
+<br>
+<h1>GeoCaches</h1>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"/ >
 <table class="table">
         <thead>
@@ -32,50 +164,3 @@
     <br>
     <br>
 </table>
-
-@* Google/GeoCode Map *@
-<div id="map"></div>
-
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        #map{
-            height: 500px;
-            width: 100%;
-        }
-    </style>
-    <script>
-        function initMap() {
-            //var myLatLng = { lat: 37.4221, lng: -122.0841 };
-            //var hawaii = { lat: 19.8968, lng: -155.582779 }; *
-            var dynamicLoc = { lat: (parseFloat((document.getElementById("modelLat").textContent))), 
-                                lng: (parseFloat((document.getElementById("modelLong").textContent)))};
-            var map = new google.maps.Map(document.getElementById("map"), {
-                zoom:  10, 
-                center: dynamicLoc,
-                streetViewControl: true,
-                title: "Testing2 Title"
-            });
-            var marker = new google.maps.Marker({
-                position: dynamicLoc,
-                map: map,
-                title: "Testing Title"
-            });
-            var marker2 = new google.maps.Marker({
-                position: beaverton,
-                map: map
-            });
-            var marker3 = new google.maps.Marker({
-                position: dynamicLoc,
-                map: map
-            });
-        }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBazJvAEkpno22Z8uO2ceyFdt03bft9igw&callback=initMap"></script>
-    @* @using (Html.BeginForm())
-{
-
-    <input type="submit" value="Edit" />
-} *@

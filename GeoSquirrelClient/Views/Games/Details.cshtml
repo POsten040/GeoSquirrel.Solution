@@ -12,14 +12,32 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Players</th>
+                <th>Caches</th>
+                <th>Found</th>
             </tr>
         </thead>
         <tbody>
                 <tr>
                     <td>@Model.GameId</td>
                     <td>@Model.Name</td>
+                    <td>Nathan, Randel</td>
+                    <td>Portland, Pittock Mansion</td>
+                    <td>@Html.ActionLink("Pittock Mansion", "Details", "Caches", new { id =1})</td>
                 </tr>
         </tbody>
 </table>
+<a  class="btn btn-light" asp-area="" asp-controller="Caches" asp-action="Index">Cache List</a>
+<a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Index">Game List</a>
+<a  class="btn btn-light" asp-area="" asp-controller="Players" asp-action="Index">Player List</a>
+@* @using (Html.BeginForm("AddPlayer", "Game"))
+{
+  @Html.HiddenFor(model => model.GameId)
 
-@Html.ActionLink("Join Game", "JoinGame", "Games", new { })
+  @Html.Label("Add an Player")
+  @Html.DropDownList("PlayerId", "*select*")
+  
+  <input type="submit" value="Add"/>
+
+}
+@Html.ActionLink("Join Game", "JoinGame", "Games", new { }) *@

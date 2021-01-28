@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>All Players:</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"/ >
+<table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Player player in Model)
+            {
+                <tr>
+                    <td>@player.PlayerId</td>
+                    <td>@player.Name</td>
+                    <td>@player.UserEmail</td>
+                    <td><a class="btn btn-dark" href="/Players/Details/@(player.PlayerId)"><p>View Details</p></a></td>
+                </tr>
+            }
+        </tbody>
+            <a  class="btn btn-light" asp-area="" asp-controller="Players" asp-action="Create">Create A New Player</a>
+    </table>
+
+      <a  class="btn btn-light" asp-area="" asp-controller="Caches" asp-action="Index">Cache List</a>
+      <a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Index">Game List</a>

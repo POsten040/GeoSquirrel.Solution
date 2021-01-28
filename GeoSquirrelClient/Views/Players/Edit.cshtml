@@ -1,0 +1,29 @@
+
+<form action="/Players/Details/@(Model.PlayerId)" method="post">
+    @Html.Hidden("UserEmail", $"{User.Identity.Name}")
+    <table class="table" >
+        <thead>
+            <tr>
+                <th><label for="id">Id</label></th>
+                <th><label for="name">Name</label></th>
+                <th><label for="UserEmail">Email</label></th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>@Model.PlayerId</td>
+                    <td><input id="PlayerId" name="PlayerId" type="number" value="@(Model.PlayerId)"></td>
+                    <td><input id="Name" name="Name" type="text" step="any" value="@(Model.Name)"></td>
+                    <td><input id="UserEmail" name="UserEmail" type="email" step="any" value="@(Model.UserEmail)"></td
+                </tr>
+        </tbody>
+    </table>
+<button class="btn btn-dark" type="submit" http-equiv="refresh">Submit Edits</button>
+<br>
+<br>
+<a class="btn btn-dark" href="/Caches/Players/@(Model.PlayerId)"><p>Cancel & Go Back</p></a>
+</form>
+<hr />
+<a  class="btn btn-light" asp-area="" asp-controller="Caches" asp-action="Index">Cache List</a>
+<a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Index">Game List</a>
+<a  class="btn btn-light" asp-area="" asp-controller="Players" asp-action="Index">Player List</a>
