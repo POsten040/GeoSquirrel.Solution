@@ -10,6 +10,7 @@ namespace GeoSquirrelApi.Models
     [Required]
     [StringLength (25)]
     public string Name{ get; set; }
+    public string UserEmail { get; set; }
 
   }
 }

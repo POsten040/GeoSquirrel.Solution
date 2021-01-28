@@ -24,10 +24,10 @@ namespace GeoSquirrelApi.Models
             );
         builder.Entity<Player>()
             .HasData(
-                new Player { PlayerId =1, Name = "Svea", Email = "svealinneawade@gmail.com" }, 
-                new Player { PlayerId = 2, Name = "Nathan", Email = "nathanschrader@icloud.com"},
-                new Player { PlayerId = 3, Name = "Patrick", Email = "posten.coding@gmail.com"},
-                new Player { PlayerId = 4, Name = "Randel", Email = "randel.c.moore@gmail.com"}
+                new Player { PlayerId =1, Name = "Svea", UserEmail = "svealinneawade@gmail.com" }, 
+                new Player { PlayerId = 2, Name = "Nathan", UserEmail = "nathanschrader@icloud.com"},
+                new Player { PlayerId = 3, Name = "Patrick", UserEmail = "posten.coding@gmail.com"},
+                new Player { PlayerId = 4, Name = "Randel", UserEmail = "randel.c.moore@gmail.com"}
                 );
         }
     }

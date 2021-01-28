@@ -26,11 +26,6 @@ namespace GeoSquirrelClient.Controllers
       var allCaches = Cache.GetCaches();
       return View(allCaches);
     }
-    // public IActionResult Index()
-    // {
-    //   var allCaches = new List<Cache>();
-    //   return View(allCaches);
-    // }
 
     [HttpPost]
     public ActionResult Index(Cache cache)

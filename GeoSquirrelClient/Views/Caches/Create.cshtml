@@ -1,4 +1,5 @@
 @model GeoSquirrelClient.Models.Cache
+@using Microsoft.AspNetCore.Identity;
 
 
 <div class="card">
@@ -7,6 +8,7 @@
       <div class= "card-text">
       @using (Html.BeginForm())
       {
+        @Html.Hidden("UserEmail", $"{User.Identity.Name}")
         @Html.LabelFor(model => model.Name)
         <input id="Name" name="Name" type="text">
         <br>

@@ -17,6 +17,7 @@ namespace GeoSquirrelApi.Models
         public decimal Longitude { get; set; }
         [Required]
         public DateTime DateCreated { get; set; }
+        public string UserEmail { get; set; }
     }
 }
 

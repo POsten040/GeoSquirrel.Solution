@@ -64,5 +64,11 @@ namespace GeoSquirrelClient.Controllers
       Game.Post(game);
       return RedirectToAction("Index");
     }
+    [HttpPost]
+    public ActionResult JoinGame(Game game)
+    {
+      Game.Post(game);
+      return RedirectToAction("Index");
+    }
   }
 }

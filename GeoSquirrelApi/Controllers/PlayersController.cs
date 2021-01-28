@@ -20,16 +20,12 @@ namespace GeoSquirrelApi.Controllers
           _db = db;
       }
       [HttpGet]
-        public ActionResult<IEnumerable<Player>> Get(string name, string email)
+        public ActionResult<IEnumerable<Player>> Get(string name)
         {
             var query = _db.Players.AsQueryable();
             if (name != null)
             {
                 query = query.Where(e => e.Name == name);
-            }
-            if (email != null)
-            {
-                query = query.Where(e => e.Email== email);
             }
             return query.ToList();
         }

@@ -147,15 +147,17 @@ Create a new file in the root directory of the __BusinessLookup.Solution/ direct
 ```
 Replace "YourId" and "YourPassword" in the code above with the user id and user password you use for logging into MySQL Workbench.  Save the "appsettings.json" file.
 
-Type the following code and hit enter/return to install the necessary dependencies. 
+Navigate to `GeoSquirrelClient` directory and type the following code and hit enter/return to install the necessary dependencies. 
 
 <code>dotnet restore</code>
 
-Once the dependencies have installed, type the following commands into your console, hitting enter/return after each.
-
-<code>dotnet ef migrations add Initial</code>
+Once the dependencies have installed, type the following command to build the database the projects uses.
 
 <code>dotnet ef database update</code>
+
+After installing dependencies and building the database, run the project with the command 
+
+<code>dotnet run</code>
 
 **Swagger**
  

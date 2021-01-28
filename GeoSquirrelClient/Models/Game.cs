@@ -12,7 +12,7 @@ namespace GeoSquirrelClient.Models
   {
     public int GameId { get; set; }
     public string Name{ get; set; } 
-
+    public string UserEmail { get; set; } 
     public static List<Game> GetGames()
     {
       var apiCallTask = ApiHelper.GameGetAll();

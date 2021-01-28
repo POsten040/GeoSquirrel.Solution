@@ -17,6 +17,7 @@ namespace GeoSquirrelApi.Controllers
         private GeoSquirrelApiContext _db;
         public CachesController(GeoSquirrelApiContext db)
         {
+            // _userManager = userManager;
             _db = db;
         }
         

@@ -21,7 +21,8 @@ namespace GeoSquirrelClient.Models
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
     public DateTime DateCreated { get; set; }
     // public GeoLocation location { get; set; }
-    public virtual ApplicationUser User { get; set; } 
+    // public virtual ApplicationUser User { get; set; } 
+    public string UserEmail { get; set; }
 
     public static List<Cache> GetCaches()
     {

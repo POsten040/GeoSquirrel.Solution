@@ -7,23 +7,23 @@ namespace GeoSquirrelClient.Models
 {
   class ApiHelper
   {
+    
     public static async Task<string> CachesGetAll()
     {
-      Console.WriteLine("GET ALL");
+      
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"caches", Method.GET);
-      Console.WriteLine(request);
       var response = await client.ExecuteTaskAsync(request);
       return response.Content;
     }
 
-        public static async Task<string> CachesGet(int id)
-      {
-        RestClient client = new RestClient("http://localhost:5000/api");
-        RestRequest request = new RestRequest($"caches/{id}", Method.GET);
-        var response = await client.ExecuteTaskAsync(request);
-        return response.Content;
-      }
+      public static async Task<string> CachesGet(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"caches/{id}", Method.GET);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
 
     public static async Task CachesPost(string newCache)
     {

@@ -11,7 +11,7 @@ namespace GeoSquirrelApi.Models
         [Required]
         public string Name { get; set; }
         [Required]
-        public string Email { get; set; }
+        public string UserEmail { get; set; } 
         
         // public List<Cache> CacheList { get;set;}
     }
