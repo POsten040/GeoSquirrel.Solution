@@ -1,6 +1,6 @@
 # _GeoSquirrel_
 
-### _January 25, 2021_
+### _January 28, 2021_
 
 ### By Svea Wade, Nathan Schrader, Randel Moore, Patrick Osten 
 
@@ -162,6 +162,10 @@ Once the dependencies have installed, type the following commands into your cons
 Here is the information on Swagger which was implemented in this project: https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-5.0 
 I personally used Swashbuckle, the documentation for intalling swashbuckle is here: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0&tabs=visual-studio 
 
+**Google Maps API**
+
+We impletemented the google maps api in order to be able to track the geocaches that we created via a map on the page. 
+https://developers.google.com/maps/documentation/javascript/overview 
 
 ## API Information
 **Swagger**
@@ -205,7 +209,19 @@ DELETE /api/caches/{id}
 ```
 
 -------------------------------------------------------------------------
+### Games
 
+Access the name, id and players associated with a particular game. 
+
+HTTP Request Structure: 
+
+```
+GET /api/games
+POST /api/gamess
+GET /api/games/{id}
+PUT /api/games/{id}
+DELETE /api/games/{id}
+```
 
 **Example of a Query:** 
 
@@ -225,6 +241,13 @@ http://localhost:5000/api/caches/?latitude=
 
 JSON Response: 
 ```
+  {
+    "cacheId": 1,
+    "name": "Pittock Mansion",
+    "latitude": 45.5252,
+    "longitude": -122.7163,
+    "dateCreated": "2020-12-01T00:00:00"
+  },
 
 ```
 

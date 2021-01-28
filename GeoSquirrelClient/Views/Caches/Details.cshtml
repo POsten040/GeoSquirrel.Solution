@@ -1,7 +1,8 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+<h1>@Model.Name</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"/ >
 <table class="table">
         <thead>
             <tr>
@@ -21,11 +22,14 @@
                     <td>@Model.DateCreated</td>
                 </tr>
         </tbody>
+        <a class="btn btn-light" href="/Caches">Return To Caches</a>
+        <br>
+        <br>
     </table>
 
-<a class="btn btn-dark" href="/Caches/Edit/@(Model.CacheId)"><p>Edit @Model.Name</p></a>
+<a class="btn btn-dark" href="/Caches/Edit/@(Model.CacheId)">Edit @Model.Name</a>
+<a class= "btn btn-dark" href="/Caches/Delete/@(Model.CacheId)">Delete  @Model.Name</a>
 <hr />
-<a href="/Caches"><p>Return To Caches</p></a>
 
 @* Google/GeoCode Map *@
 <div id="map"></div>

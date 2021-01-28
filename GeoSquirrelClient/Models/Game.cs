@@ -11,6 +11,7 @@ namespace GeoSquirrelClient.Models
   public class Game
   {
     public int GameId { get; set; }
+    [DisplayName("Name: ")]
     public string Name{ get; set; } 
 
     public static List<Game> GetGames()

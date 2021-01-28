@@ -2,50 +2,41 @@
   Layout = "_Layout";
 }
 
-<h1>Find Games/Index Page</h1>
+@* <h1>Find Games/Index Page</h1>
 
 @foreach(Game game in Model)
 {
   @Html.ActionLink($"{game.Name}", "Details", null, new { id = game.GameId});
-}
+} *@
 
 
 
 
 
 
-@* @{
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<h1>All Businesses:</h1>
-
+<h1>All Games:</h1>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray"/ >
 <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Industry</th>
-                <th>Hours</th>
-                <th>Address</th>
-                <th>Website</th>
-                <th>Phone</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (Business business in Model)
+            @foreach (Game game in Model)
             {
                 <tr>
-                    <td>@business.BusinessId</td>
-                    <td>@business.Name</td>
-                    <td>@business.Industry</td>
-                    <td>@business.Hours</td>
-                    <td>@business.Address</td>
-                    <td><a href="@business.URL"><p>@business.URL</p></a></td>
-                    <td><a href="tel:@business.Phone"><p>@business.Phone</p></a></td>
-                    <td><a class="btn btn-success" href="/Businesses/Details/@(business.BusinessId)"><p>View Details</p></a></td>
+                    <td>@game.GameId</td>
+                    <td>@game.Name</td>
+                    <td><a class="btn btn-dark" href="/Games/Details/@(game.GameId)"><p>View Details</p></a></td>
                 </tr>
             }
         </tbody>
-    </table> *@
+            <a  class="btn btn-light" asp-area="" asp-controller="Games" asp-action="Create">Create A Game</a>
+    </table>
