@@ -3,21 +3,29 @@
 }
 
 @using System.Security.Claims
+<div class="img-container" text-align="center">
+    <img src="/img/GeoSquirrelQuote2.png" alt="GeoSquirrelQuote2" width="200" height="200" text-align="center">
+</div>
 
-<hr />
-@if (User.Identity.IsAuthenticated)
-{
-    <p>Hello @User.Identity.Name, welcome back!</p>
-    @using (Html.BeginForm("LogOff", "Account"))
-    {
-        <input type="submit" class="btn btn-dark" value="Log out" id="logout"/>
-        <br>
+<div class="card" id="loginhelp">
+    <div class= "card-body">
+        <div class="img-container" text-align="center">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>Hello @User.Identity.Name, welcome back to GeoSquirrel!</p>
+                @using (Html.BeginForm("LogOff", "Account"))
+                {
+                    <input type="submit" class="btn btn-dark" value="Log out" id="logout"/>
+                    <br>
 
-    }
-    @Html.ActionLink("View Cache List", "Index", "Cache") 
-}
-else
-{
-    <p>@Html.ActionLink("Register", "Register")</p>
-    <p>@Html.ActionLink("Log in", "Login")</p>
-}
+                }
+                @Html.ActionLink("View Cache List", "Index", "Cache") 
+            }
+            else
+            {
+                <p>@Html.ActionLink("Register", "Register")</p>
+                <p>@Html.ActionLink("Log in", "Login")</p>
+            }
+        </div>
+    </div>
+</div>

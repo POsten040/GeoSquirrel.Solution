@@ -10,9 +10,15 @@
       <div class= "card-text">
       @using (Html.BeginForm())
       {
+<<<<<<< HEAD
         @Html.Hidden("UserEmail", $"{User.Identity.Name}")
         <p class="labels">@Html.LabelFor(model => model.Name)</p>
         @Html.TextBoxFor(model => model.Name)
+=======
+        @Html.LabelFor(model => model.Name)
+        <input id="Name" name="Name" type="text">
+        <br>
+>>>>>>> 385029f7aa3dae7f1bdbfe0dcedb16d16f229cbe
         <br>
         <input type="submit" value="Create a Game" class="btn btn-dark" http-equiv="refresh">
         <meta http-equiv="refresh">

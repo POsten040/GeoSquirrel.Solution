@@ -93,12 +93,7 @@ select {
   color: #4c4c4c;
 }
 
-/* p {
-  font-size: 12px;
-  width: 150px;
-  display: inline-block;
-  margin-left: 18px;
-} */
+
 h1 {
   font-size: 32px;
   font-weight: 300;
@@ -115,7 +110,7 @@ html{
 .testbox {
   margin: 20px auto;
   width: 343px; 
-  height: 335px; 
+  height: 305px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
@@ -129,7 +124,7 @@ html{
 .testbox1 {
   margin: 20px auto;
   width: 343px; 
-  height: 464px; 
+  height: 404px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
@@ -200,3 +195,6 @@ h6 {
 }
 
 
+p {
+  font-family:'Work Sans', sans-serif
+}
